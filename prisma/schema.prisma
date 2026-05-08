@@ -1,0 +1,225 @@
+generator client {
+  provider = "prisma-client"
+  output   = "../src/generated"
+}
+
+datasource db {
+  provider = "postgresql"
+}
+
+model User {
+  id           String   @id @default(uuid())
+  name         String
+  email        String   @unique
+  password     String?
+  profileImage String?
+  firebaseUid  String?  @unique
+  role         UserRole @default(STUDENT)
+
+  isVerified Boolean @default(false)
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  enrollments    Enrollment[]
+  courses        Course[]
+  schedules      Schedule[]
+  studyPlans     StudyPlan[]
+  studyNotes     StudyNote[]
+  quizAttempts   QuizAttempt[]
+  chatbotHistory ChatbotHistory[]
+  certificates   Certificate[]
+
+  payments Payment[]
+}
+
+enum UserRole {
+  STUDENT
+  INSTRUCTOR
+  ADMIN
+}
+
+model Course {
+  id          String  @id @default(uuid())
+  title       String
+  description String
+  thumbnail   String
+  price       Float
+  isPremium   Boolean @default(false)
+
+  instructorId String
+  instructor   User   @relation(fields: [instructorId], references: [id])
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  lessons     Lesson[]
+  enrollments Enrollment[]
+  quizzes     Quiz[]
+
+  payments     Payment[]
+  certificates Certificate[]
+}
+
+model Lesson {
+  id          String  @id @default(uuid())
+  title       String
+  description String
+  videoUrl    String?
+  pdfUrl      String?
+  content     String?
+
+  courseId String
+  course   Course @relation(fields: [courseId], references: [id])
+
+  createdAt DateTime @default(now())
+}
+
+model Enrollment {
+  id       String @id @default(uuid())
+  userId   String
+  courseId String
+
+  user   User   @relation(fields: [userId], references: [id])
+  course Course @relation(fields: [courseId], references: [id])
+
+  enrolledAt DateTime @default(now())
+
+  @@unique([userId, courseId])
+}
+
+model Quiz {
+  id    String @id @default(uuid())
+  title String
+
+  courseId String
+  course   Course @relation(fields: [courseId], references: [id])
+
+  questions Question[]
+  attempts  QuizAttempt[]
+}
+
+model Question {
+  id           String @id @default(uuid())
+  questionText String
+  optionA      String
+  optionB      String
+  optionC      String
+  optionD      String
+  correctAns   String
+
+  quizId String
+  quiz   Quiz   @relation(fields: [quizId], references: [id])
+}
+
+model QuizAttempt {
+  id    String @id @default(uuid())
+  score Int
+
+  userId String
+  quizId String
+
+  user User @relation(fields: [userId], references: [id])
+  quiz Quiz @relation(fields: [quizId], references: [id])
+
+  attemptedAt DateTime @default(now())
+}
+
+model Payment {
+  id       String @id @default(uuid())
+  userId   String
+  courseId String
+
+  amount        Float
+  transactionId String
+  paymentStatus String
+
+  user   User   @relation(fields: [userId], references: [id])
+  course Course @relation(fields: [courseId], references: [id])
+
+  createdAt DateTime @default(now())
+}
+
+model ChatbotHistory {
+  id     String @id @default(uuid())
+  userId String
+
+  prompt   String
+  response String
+
+  user User @relation(fields: [userId], references: [id])
+
+  createdAt DateTime @default(now())
+}
+
+model StudyNote {
+  id     String @id @default(uuid())
+  userId String
+
+  originalText String
+  summary      String
+  flashcards   Json
+
+  user User @relation(fields: [userId], references: [id])
+
+  createdAt DateTime @default(now())
+}
+
+model StudyPlan {
+  id     String @id @default(uuid())
+  userId String
+
+  title     String
+  goal      String
+  startDate DateTime
+  endDate   DateTime
+  status    PlanStatus @default(PENDING)
+
+  user User @relation(fields: [userId], references: [id])
+
+  createdAt DateTime @default(now())
+}
+
+enum PlanStatus {
+  PENDING
+  IN_PROGRESS
+  COMPLETED
+}
+
+model Schedule {
+  id     String @id @default(uuid())
+  userId String
+
+  title       String
+  description String?
+  startTime   DateTime
+  endTime     DateTime
+
+  user User @relation(fields: [userId], references: [id])
+
+  createdAt DateTime @default(now())
+}
+
+model DictionaryWord {
+  id            String  @id @default(uuid())
+  word          String  @unique
+  meaning       String
+  example       String?
+  pronunciation String?
+  synonyms      Json?
+  antonyms      Json?
+
+  createdAt DateTime @default(now())
+}
+
+model Certificate {
+  id             String @id @default(uuid())
+  userId         String
+  courseId       String
+  certificateUrl String
+
+  user   User   @relation(fields: [userId], references: [id])
+  course Course @relation(fields: [courseId], references: [id])
+
+  createdAt DateTime @default(now())
+}
