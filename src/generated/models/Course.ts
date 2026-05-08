@@ -44,6 +44,7 @@ export type CourseMinAggregateOutputType = {
   instructorId: string | null
   createdAt: Date | null
   updatedAt: Date | null
+  isPublished: boolean | null
 }
 
 export type CourseMaxAggregateOutputType = {
@@ -56,6 +57,7 @@ export type CourseMaxAggregateOutputType = {
   instructorId: string | null
   createdAt: Date | null
   updatedAt: Date | null
+  isPublished: boolean | null
 }
 
 export type CourseCountAggregateOutputType = {
@@ -68,6 +70,7 @@ export type CourseCountAggregateOutputType = {
   instructorId: number
   createdAt: number
   updatedAt: number
+  isPublished: number
   _all: number
 }
 
@@ -90,6 +93,7 @@ export type CourseMinAggregateInputType = {
   instructorId?: true
   createdAt?: true
   updatedAt?: true
+  isPublished?: true
 }
 
 export type CourseMaxAggregateInputType = {
@@ -102,6 +106,7 @@ export type CourseMaxAggregateInputType = {
   instructorId?: true
   createdAt?: true
   updatedAt?: true
+  isPublished?: true
 }
 
 export type CourseCountAggregateInputType = {
@@ -114,6 +119,7 @@ export type CourseCountAggregateInputType = {
   instructorId?: true
   createdAt?: true
   updatedAt?: true
+  isPublished?: true
   _all?: true
 }
 
@@ -213,6 +219,7 @@ export type CourseGroupByOutputType = {
   instructorId: string
   createdAt: Date
   updatedAt: Date
+  isPublished: boolean
   _count: CourseCountAggregateOutputType | null
   _avg: CourseAvgAggregateOutputType | null
   _sum: CourseSumAggregateOutputType | null
@@ -248,6 +255,7 @@ export type CourseWhereInput = {
   instructorId?: Prisma.StringFilter<"Course"> | string
   createdAt?: Prisma.DateTimeFilter<"Course"> | Date | string
   updatedAt?: Prisma.DateTimeFilter<"Course"> | Date | string
+  isPublished?: Prisma.BoolFilter<"Course"> | boolean
   instructor?: Prisma.XOR<Prisma.UserScalarRelationFilter, Prisma.UserWhereInput>
   lessons?: Prisma.LessonListRelationFilter
   enrollments?: Prisma.EnrollmentListRelationFilter
@@ -266,6 +274,7 @@ export type CourseOrderByWithRelationInput = {
   instructorId?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
+  isPublished?: Prisma.SortOrder
   instructor?: Prisma.UserOrderByWithRelationInput
   lessons?: Prisma.LessonOrderByRelationAggregateInput
   enrollments?: Prisma.EnrollmentOrderByRelationAggregateInput
@@ -287,6 +296,7 @@ export type CourseWhereUniqueInput = Prisma.AtLeast<{
   instructorId?: Prisma.StringFilter<"Course"> | string
   createdAt?: Prisma.DateTimeFilter<"Course"> | Date | string
   updatedAt?: Prisma.DateTimeFilter<"Course"> | Date | string
+  isPublished?: Prisma.BoolFilter<"Course"> | boolean
   instructor?: Prisma.XOR<Prisma.UserScalarRelationFilter, Prisma.UserWhereInput>
   lessons?: Prisma.LessonListRelationFilter
   enrollments?: Prisma.EnrollmentListRelationFilter
@@ -305,6 +315,7 @@ export type CourseOrderByWithAggregationInput = {
   instructorId?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
+  isPublished?: Prisma.SortOrder
   _count?: Prisma.CourseCountOrderByAggregateInput
   _avg?: Prisma.CourseAvgOrderByAggregateInput
   _max?: Prisma.CourseMaxOrderByAggregateInput
@@ -325,6 +336,7 @@ export type CourseScalarWhereWithAggregatesInput = {
   instructorId?: Prisma.StringWithAggregatesFilter<"Course"> | string
   createdAt?: Prisma.DateTimeWithAggregatesFilter<"Course"> | Date | string
   updatedAt?: Prisma.DateTimeWithAggregatesFilter<"Course"> | Date | string
+  isPublished?: Prisma.BoolWithAggregatesFilter<"Course"> | boolean
 }
 
 export type CourseCreateInput = {
@@ -336,6 +348,7 @@ export type CourseCreateInput = {
   isPremium?: boolean
   createdAt?: Date | string
   updatedAt?: Date | string
+  isPublished?: boolean
   instructor: Prisma.UserCreateNestedOneWithoutCoursesInput
   lessons?: Prisma.LessonCreateNestedManyWithoutCourseInput
   enrollments?: Prisma.EnrollmentCreateNestedManyWithoutCourseInput
@@ -354,6 +367,7 @@ export type CourseUncheckedCreateInput = {
   instructorId: string
   createdAt?: Date | string
   updatedAt?: Date | string
+  isPublished?: boolean
   lessons?: Prisma.LessonUncheckedCreateNestedManyWithoutCourseInput
   enrollments?: Prisma.EnrollmentUncheckedCreateNestedManyWithoutCourseInput
   quizzes?: Prisma.QuizUncheckedCreateNestedManyWithoutCourseInput
@@ -370,6 +384,7 @@ export type CourseUpdateInput = {
   isPremium?: Prisma.BoolFieldUpdateOperationsInput | boolean
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  isPublished?: Prisma.BoolFieldUpdateOperationsInput | boolean
   instructor?: Prisma.UserUpdateOneRequiredWithoutCoursesNestedInput
   lessons?: Prisma.LessonUpdateManyWithoutCourseNestedInput
   enrollments?: Prisma.EnrollmentUpdateManyWithoutCourseNestedInput
@@ -388,6 +403,7 @@ export type CourseUncheckedUpdateInput = {
   instructorId?: Prisma.StringFieldUpdateOperationsInput | string
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  isPublished?: Prisma.BoolFieldUpdateOperationsInput | boolean
   lessons?: Prisma.LessonUncheckedUpdateManyWithoutCourseNestedInput
   enrollments?: Prisma.EnrollmentUncheckedUpdateManyWithoutCourseNestedInput
   quizzes?: Prisma.QuizUncheckedUpdateManyWithoutCourseNestedInput
@@ -405,6 +421,7 @@ export type CourseCreateManyInput = {
   instructorId: string
   createdAt?: Date | string
   updatedAt?: Date | string
+  isPublished?: boolean
 }
 
 export type CourseUpdateManyMutationInput = {
@@ -416,6 +433,7 @@ export type CourseUpdateManyMutationInput = {
   isPremium?: Prisma.BoolFieldUpdateOperationsInput | boolean
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  isPublished?: Prisma.BoolFieldUpdateOperationsInput | boolean
 }
 
 export type CourseUncheckedUpdateManyInput = {
@@ -428,6 +446,7 @@ export type CourseUncheckedUpdateManyInput = {
   instructorId?: Prisma.StringFieldUpdateOperationsInput | string
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  isPublished?: Prisma.BoolFieldUpdateOperationsInput | boolean
 }
 
 export type CourseListRelationFilter = {
@@ -450,6 +469,7 @@ export type CourseCountOrderByAggregateInput = {
   instructorId?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
+  isPublished?: Prisma.SortOrder
 }
 
 export type CourseAvgOrderByAggregateInput = {
@@ -466,6 +486,7 @@ export type CourseMaxOrderByAggregateInput = {
   instructorId?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
+  isPublished?: Prisma.SortOrder
 }
 
 export type CourseMinOrderByAggregateInput = {
@@ -478,6 +499,7 @@ export type CourseMinOrderByAggregateInput = {
   instructorId?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
+  isPublished?: Prisma.SortOrder
 }
 
 export type CourseSumOrderByAggregateInput = {
@@ -618,6 +640,7 @@ export type CourseCreateWithoutInstructorInput = {
   isPremium?: boolean
   createdAt?: Date | string
   updatedAt?: Date | string
+  isPublished?: boolean
   lessons?: Prisma.LessonCreateNestedManyWithoutCourseInput
   enrollments?: Prisma.EnrollmentCreateNestedManyWithoutCourseInput
   quizzes?: Prisma.QuizCreateNestedManyWithoutCourseInput
@@ -634,6 +657,7 @@ export type CourseUncheckedCreateWithoutInstructorInput = {
   isPremium?: boolean
   createdAt?: Date | string
   updatedAt?: Date | string
+  isPublished?: boolean
   lessons?: Prisma.LessonUncheckedCreateNestedManyWithoutCourseInput
   enrollments?: Prisma.EnrollmentUncheckedCreateNestedManyWithoutCourseInput
   quizzes?: Prisma.QuizUncheckedCreateNestedManyWithoutCourseInput
@@ -680,6 +704,7 @@ export type CourseScalarWhereInput = {
   instructorId?: Prisma.StringFilter<"Course"> | string
   createdAt?: Prisma.DateTimeFilter<"Course"> | Date | string
   updatedAt?: Prisma.DateTimeFilter<"Course"> | Date | string
+  isPublished?: Prisma.BoolFilter<"Course"> | boolean
 }
 
 export type CourseCreateWithoutLessonsInput = {
@@ -691,6 +716,7 @@ export type CourseCreateWithoutLessonsInput = {
   isPremium?: boolean
   createdAt?: Date | string
   updatedAt?: Date | string
+  isPublished?: boolean
   instructor: Prisma.UserCreateNestedOneWithoutCoursesInput
   enrollments?: Prisma.EnrollmentCreateNestedManyWithoutCourseInput
   quizzes?: Prisma.QuizCreateNestedManyWithoutCourseInput
@@ -708,6 +734,7 @@ export type CourseUncheckedCreateWithoutLessonsInput = {
   instructorId: string
   createdAt?: Date | string
   updatedAt?: Date | string
+  isPublished?: boolean
   enrollments?: Prisma.EnrollmentUncheckedCreateNestedManyWithoutCourseInput
   quizzes?: Prisma.QuizUncheckedCreateNestedManyWithoutCourseInput
   payments?: Prisma.PaymentUncheckedCreateNestedManyWithoutCourseInput
@@ -739,6 +766,7 @@ export type CourseUpdateWithoutLessonsInput = {
   isPremium?: Prisma.BoolFieldUpdateOperationsInput | boolean
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  isPublished?: Prisma.BoolFieldUpdateOperationsInput | boolean
   instructor?: Prisma.UserUpdateOneRequiredWithoutCoursesNestedInput
   enrollments?: Prisma.EnrollmentUpdateManyWithoutCourseNestedInput
   quizzes?: Prisma.QuizUpdateManyWithoutCourseNestedInput
@@ -756,6 +784,7 @@ export type CourseUncheckedUpdateWithoutLessonsInput = {
   instructorId?: Prisma.StringFieldUpdateOperationsInput | string
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  isPublished?: Prisma.BoolFieldUpdateOperationsInput | boolean
   enrollments?: Prisma.EnrollmentUncheckedUpdateManyWithoutCourseNestedInput
   quizzes?: Prisma.QuizUncheckedUpdateManyWithoutCourseNestedInput
   payments?: Prisma.PaymentUncheckedUpdateManyWithoutCourseNestedInput
@@ -771,6 +800,7 @@ export type CourseCreateWithoutEnrollmentsInput = {
   isPremium?: boolean
   createdAt?: Date | string
   updatedAt?: Date | string
+  isPublished?: boolean
   instructor: Prisma.UserCreateNestedOneWithoutCoursesInput
   lessons?: Prisma.LessonCreateNestedManyWithoutCourseInput
   quizzes?: Prisma.QuizCreateNestedManyWithoutCourseInput
@@ -788,6 +818,7 @@ export type CourseUncheckedCreateWithoutEnrollmentsInput = {
   instructorId: string
   createdAt?: Date | string
   updatedAt?: Date | string
+  isPublished?: boolean
   lessons?: Prisma.LessonUncheckedCreateNestedManyWithoutCourseInput
   quizzes?: Prisma.QuizUncheckedCreateNestedManyWithoutCourseInput
   payments?: Prisma.PaymentUncheckedCreateNestedManyWithoutCourseInput
@@ -819,6 +850,7 @@ export type CourseUpdateWithoutEnrollmentsInput = {
   isPremium?: Prisma.BoolFieldUpdateOperationsInput | boolean
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  isPublished?: Prisma.BoolFieldUpdateOperationsInput | boolean
   instructor?: Prisma.UserUpdateOneRequiredWithoutCoursesNestedInput
   lessons?: Prisma.LessonUpdateManyWithoutCourseNestedInput
   quizzes?: Prisma.QuizUpdateManyWithoutCourseNestedInput
@@ -836,6 +868,7 @@ export type CourseUncheckedUpdateWithoutEnrollmentsInput = {
   instructorId?: Prisma.StringFieldUpdateOperationsInput | string
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  isPublished?: Prisma.BoolFieldUpdateOperationsInput | boolean
   lessons?: Prisma.LessonUncheckedUpdateManyWithoutCourseNestedInput
   quizzes?: Prisma.QuizUncheckedUpdateManyWithoutCourseNestedInput
   payments?: Prisma.PaymentUncheckedUpdateManyWithoutCourseNestedInput
@@ -851,6 +884,7 @@ export type CourseCreateWithoutQuizzesInput = {
   isPremium?: boolean
   createdAt?: Date | string
   updatedAt?: Date | string
+  isPublished?: boolean
   instructor: Prisma.UserCreateNestedOneWithoutCoursesInput
   lessons?: Prisma.LessonCreateNestedManyWithoutCourseInput
   enrollments?: Prisma.EnrollmentCreateNestedManyWithoutCourseInput
@@ -868,6 +902,7 @@ export type CourseUncheckedCreateWithoutQuizzesInput = {
   instructorId: string
   createdAt?: Date | string
   updatedAt?: Date | string
+  isPublished?: boolean
   lessons?: Prisma.LessonUncheckedCreateNestedManyWithoutCourseInput
   enrollments?: Prisma.EnrollmentUncheckedCreateNestedManyWithoutCourseInput
   payments?: Prisma.PaymentUncheckedCreateNestedManyWithoutCourseInput
@@ -899,6 +934,7 @@ export type CourseUpdateWithoutQuizzesInput = {
   isPremium?: Prisma.BoolFieldUpdateOperationsInput | boolean
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  isPublished?: Prisma.BoolFieldUpdateOperationsInput | boolean
   instructor?: Prisma.UserUpdateOneRequiredWithoutCoursesNestedInput
   lessons?: Prisma.LessonUpdateManyWithoutCourseNestedInput
   enrollments?: Prisma.EnrollmentUpdateManyWithoutCourseNestedInput
@@ -916,6 +952,7 @@ export type CourseUncheckedUpdateWithoutQuizzesInput = {
   instructorId?: Prisma.StringFieldUpdateOperationsInput | string
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  isPublished?: Prisma.BoolFieldUpdateOperationsInput | boolean
   lessons?: Prisma.LessonUncheckedUpdateManyWithoutCourseNestedInput
   enrollments?: Prisma.EnrollmentUncheckedUpdateManyWithoutCourseNestedInput
   payments?: Prisma.PaymentUncheckedUpdateManyWithoutCourseNestedInput
@@ -931,6 +968,7 @@ export type CourseCreateWithoutPaymentsInput = {
   isPremium?: boolean
   createdAt?: Date | string
   updatedAt?: Date | string
+  isPublished?: boolean
   instructor: Prisma.UserCreateNestedOneWithoutCoursesInput
   lessons?: Prisma.LessonCreateNestedManyWithoutCourseInput
   enrollments?: Prisma.EnrollmentCreateNestedManyWithoutCourseInput
@@ -948,6 +986,7 @@ export type CourseUncheckedCreateWithoutPaymentsInput = {
   instructorId: string
   createdAt?: Date | string
   updatedAt?: Date | string
+  isPublished?: boolean
   lessons?: Prisma.LessonUncheckedCreateNestedManyWithoutCourseInput
   enrollments?: Prisma.EnrollmentUncheckedCreateNestedManyWithoutCourseInput
   quizzes?: Prisma.QuizUncheckedCreateNestedManyWithoutCourseInput
@@ -979,6 +1018,7 @@ export type CourseUpdateWithoutPaymentsInput = {
   isPremium?: Prisma.BoolFieldUpdateOperationsInput | boolean
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  isPublished?: Prisma.BoolFieldUpdateOperationsInput | boolean
   instructor?: Prisma.UserUpdateOneRequiredWithoutCoursesNestedInput
   lessons?: Prisma.LessonUpdateManyWithoutCourseNestedInput
   enrollments?: Prisma.EnrollmentUpdateManyWithoutCourseNestedInput
@@ -996,6 +1036,7 @@ export type CourseUncheckedUpdateWithoutPaymentsInput = {
   instructorId?: Prisma.StringFieldUpdateOperationsInput | string
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  isPublished?: Prisma.BoolFieldUpdateOperationsInput | boolean
   lessons?: Prisma.LessonUncheckedUpdateManyWithoutCourseNestedInput
   enrollments?: Prisma.EnrollmentUncheckedUpdateManyWithoutCourseNestedInput
   quizzes?: Prisma.QuizUncheckedUpdateManyWithoutCourseNestedInput
@@ -1011,6 +1052,7 @@ export type CourseCreateWithoutCertificatesInput = {
   isPremium?: boolean
   createdAt?: Date | string
   updatedAt?: Date | string
+  isPublished?: boolean
   instructor: Prisma.UserCreateNestedOneWithoutCoursesInput
   lessons?: Prisma.LessonCreateNestedManyWithoutCourseInput
   enrollments?: Prisma.EnrollmentCreateNestedManyWithoutCourseInput
@@ -1028,6 +1070,7 @@ export type CourseUncheckedCreateWithoutCertificatesInput = {
   instructorId: string
   createdAt?: Date | string
   updatedAt?: Date | string
+  isPublished?: boolean
   lessons?: Prisma.LessonUncheckedCreateNestedManyWithoutCourseInput
   enrollments?: Prisma.EnrollmentUncheckedCreateNestedManyWithoutCourseInput
   quizzes?: Prisma.QuizUncheckedCreateNestedManyWithoutCourseInput
@@ -1059,6 +1102,7 @@ export type CourseUpdateWithoutCertificatesInput = {
   isPremium?: Prisma.BoolFieldUpdateOperationsInput | boolean
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  isPublished?: Prisma.BoolFieldUpdateOperationsInput | boolean
   instructor?: Prisma.UserUpdateOneRequiredWithoutCoursesNestedInput
   lessons?: Prisma.LessonUpdateManyWithoutCourseNestedInput
   enrollments?: Prisma.EnrollmentUpdateManyWithoutCourseNestedInput
@@ -1076,6 +1120,7 @@ export type CourseUncheckedUpdateWithoutCertificatesInput = {
   instructorId?: Prisma.StringFieldUpdateOperationsInput | string
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  isPublished?: Prisma.BoolFieldUpdateOperationsInput | boolean
   lessons?: Prisma.LessonUncheckedUpdateManyWithoutCourseNestedInput
   enrollments?: Prisma.EnrollmentUncheckedUpdateManyWithoutCourseNestedInput
   quizzes?: Prisma.QuizUncheckedUpdateManyWithoutCourseNestedInput
@@ -1091,6 +1136,7 @@ export type CourseCreateManyInstructorInput = {
   isPremium?: boolean
   createdAt?: Date | string
   updatedAt?: Date | string
+  isPublished?: boolean
 }
 
 export type CourseUpdateWithoutInstructorInput = {
@@ -1102,6 +1148,7 @@ export type CourseUpdateWithoutInstructorInput = {
   isPremium?: Prisma.BoolFieldUpdateOperationsInput | boolean
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  isPublished?: Prisma.BoolFieldUpdateOperationsInput | boolean
   lessons?: Prisma.LessonUpdateManyWithoutCourseNestedInput
   enrollments?: Prisma.EnrollmentUpdateManyWithoutCourseNestedInput
   quizzes?: Prisma.QuizUpdateManyWithoutCourseNestedInput
@@ -1118,6 +1165,7 @@ export type CourseUncheckedUpdateWithoutInstructorInput = {
   isPremium?: Prisma.BoolFieldUpdateOperationsInput | boolean
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  isPublished?: Prisma.BoolFieldUpdateOperationsInput | boolean
   lessons?: Prisma.LessonUncheckedUpdateManyWithoutCourseNestedInput
   enrollments?: Prisma.EnrollmentUncheckedUpdateManyWithoutCourseNestedInput
   quizzes?: Prisma.QuizUncheckedUpdateManyWithoutCourseNestedInput
@@ -1134,6 +1182,7 @@ export type CourseUncheckedUpdateManyWithoutInstructorInput = {
   isPremium?: Prisma.BoolFieldUpdateOperationsInput | boolean
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  isPublished?: Prisma.BoolFieldUpdateOperationsInput | boolean
 }
 
 
@@ -1213,6 +1262,7 @@ export type CourseSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs =
   instructorId?: boolean
   createdAt?: boolean
   updatedAt?: boolean
+  isPublished?: boolean
   instructor?: boolean | Prisma.UserDefaultArgs<ExtArgs>
   lessons?: boolean | Prisma.Course$lessonsArgs<ExtArgs>
   enrollments?: boolean | Prisma.Course$enrollmentsArgs<ExtArgs>
@@ -1232,6 +1282,7 @@ export type CourseSelectCreateManyAndReturn<ExtArgs extends runtime.Types.Extens
   instructorId?: boolean
   createdAt?: boolean
   updatedAt?: boolean
+  isPublished?: boolean
   instructor?: boolean | Prisma.UserDefaultArgs<ExtArgs>
 }, ExtArgs["result"]["course"]>
 
@@ -1245,6 +1296,7 @@ export type CourseSelectUpdateManyAndReturn<ExtArgs extends runtime.Types.Extens
   instructorId?: boolean
   createdAt?: boolean
   updatedAt?: boolean
+  isPublished?: boolean
   instructor?: boolean | Prisma.UserDefaultArgs<ExtArgs>
 }, ExtArgs["result"]["course"]>
 
@@ -1258,9 +1310,10 @@ export type CourseSelectScalar = {
   instructorId?: boolean
   createdAt?: boolean
   updatedAt?: boolean
+  isPublished?: boolean
 }
 
-export type CourseOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "title" | "description" | "thumbnail" | "price" | "isPremium" | "instructorId" | "createdAt" | "updatedAt", ExtArgs["result"]["course"]>
+export type CourseOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "title" | "description" | "thumbnail" | "price" | "isPremium" | "instructorId" | "createdAt" | "updatedAt" | "isPublished", ExtArgs["result"]["course"]>
 export type CourseInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   instructor?: boolean | Prisma.UserDefaultArgs<ExtArgs>
   lessons?: boolean | Prisma.Course$lessonsArgs<ExtArgs>
@@ -1297,6 +1350,7 @@ export type $CoursePayload<ExtArgs extends runtime.Types.Extensions.InternalArgs
     instructorId: string
     createdAt: Date
     updatedAt: Date
+    isPublished: boolean
   }, ExtArgs["result"]["course"]>
   composites: {}
 }
@@ -1735,6 +1789,7 @@ export interface CourseFieldRefs {
   readonly instructorId: Prisma.FieldRef<"Course", 'String'>
   readonly createdAt: Prisma.FieldRef<"Course", 'DateTime'>
   readonly updatedAt: Prisma.FieldRef<"Course", 'DateTime'>
+  readonly isPublished: Prisma.FieldRef<"Course", 'Boolean'>
 }
     
 

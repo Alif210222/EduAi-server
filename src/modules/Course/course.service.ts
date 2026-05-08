@@ -1,5 +1,5 @@
+import { Prisma } from "../../generated/client";
 import { prisma } from "../../lib/prisma";
-
 
 
 // Create course 
@@ -17,7 +17,7 @@ const createCourse = async (
   return result;
 };
 
-
+// Get all courses with pagination and search 
 const getAllCourses = async (
   searchTerm?: string,
   page = 1,
@@ -25,14 +25,19 @@ const getAllCourses = async (
 ) => {
   const skip = (page - 1) * limit;
 
-  const whereCondition = searchTerm
+ const whereCondition: Prisma.CourseWhereInput =
+  searchTerm
     ? {
         title: {
           contains: searchTerm,
-          mode: "insensitive"
+          mode: Prisma.QueryMode.insensitive
         }
       }
     : {};
+
+
+
+
 
   const courses = await prisma.course.findMany({
     where: whereCondition,

@@ -1,30 +1,71 @@
 import express from "express";
-
 import { USER_ROLE } from "../../constants/user";
 import { CourseController } from "./course.controller";
+import { CourseValidation } from "./course.validation";
 import auth from "../../middlewares/auth";
+import validateRequest from "../../middlewares/validationRequest";
 
-const router = express.Router();
+const courseRouter = express.Router();
 
-router.post(
+courseRouter.post(
   "/create-course",
   auth(
     USER_ROLE.INSTRUCTOR,
     USER_ROLE.ADMIN
   ),
+  validateRequest(
+    CourseValidation.createCourseValidationSchema
+  ),
   CourseController.createCourse
 );
 
-router.get(
-  "/my-courses",
-  auth(USER_ROLE.STUDENT),
-  CourseController.getMyCourses
+courseRouter.get(
+  "/",
+  CourseController.getAllCourses
 );
 
-router.delete(
+courseRouter.get(
+  "/my-enrolled-courses",
+  auth(USER_ROLE.STUDENT),
+  CourseController.getMyEnrolledCourses
+);
+
+courseRouter.get(
   "/:id",
-  auth(USER_ROLE.ADMIN),
+  CourseController.getSingleCourse
+);
+
+courseRouter.patch(
+  "/:id",
+  auth(
+    USER_ROLE.INSTRUCTOR,
+    USER_ROLE.ADMIN
+  ),
+  CourseController.updateCourse
+);
+
+courseRouter.delete(
+  "/:id",
+  auth(
+    USER_ROLE.INSTRUCTOR,
+    USER_ROLE.ADMIN
+  ),
   CourseController.deleteCourse
 );
 
-export const CourseRoutes = router;
+courseRouter.post(
+  "/enroll/:courseId",
+  auth(USER_ROLE.STUDENT),
+  CourseController.enrollCourse
+);
+
+courseRouter.patch(
+  "/publish/:id",
+  auth(
+    USER_ROLE.INSTRUCTOR,
+    USER_ROLE.ADMIN
+  ),
+  CourseController.publishCourse
+);
+
+export const CourseRoutes = courseRouter;

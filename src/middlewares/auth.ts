@@ -1,6 +1,7 @@
 import { NextFunction, Request, Response } from "express";
 import jwt, { JwtPayload } from "jsonwebtoken";
 import config from "../config";
+import { TAuthUser } from "../interface/common";
 
 const auth = (...requiredRoles: string[]) => {
   return async (
@@ -9,7 +10,7 @@ const auth = (...requiredRoles: string[]) => {
     next: NextFunction
   ) => {
     try {
-      const token = req.headers.authorization;
+      const token = req.headers.authorization?.split(" ")[1];
 
       if (!token) {
         return res.status(401).json({
@@ -21,7 +22,9 @@ const auth = (...requiredRoles: string[]) => {
       const verifiedUser = jwt.verify(
         token,
         config.jwt_access_secret
-      ) as JwtPayload;
+      ) as TAuthUser;
+        
+      
 
       req.user = verifiedUser;
 

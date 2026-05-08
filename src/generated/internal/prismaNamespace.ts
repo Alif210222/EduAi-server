@@ -1517,7 +1517,8 @@ export const CourseScalarFieldEnum = {
   isPremium: 'isPremium',
   instructorId: 'instructorId',
   createdAt: 'createdAt',
-  updatedAt: 'updatedAt'
+  updatedAt: 'updatedAt',
+  isPublished: 'isPublished'
 } as const
 
 export type CourseScalarFieldEnum = (typeof CourseScalarFieldEnum)[keyof typeof CourseScalarFieldEnum]
