@@ -26,8 +26,11 @@ export type AggregateDictionaryWord = {
 
 export type DictionaryWordMinAggregateOutputType = {
   id: string | null
+  userId: string | null
   word: string | null
+  language: string | null
   meaning: string | null
+  translation: string | null
   example: string | null
   pronunciation: string | null
   createdAt: Date | null
@@ -35,8 +38,11 @@ export type DictionaryWordMinAggregateOutputType = {
 
 export type DictionaryWordMaxAggregateOutputType = {
   id: string | null
+  userId: string | null
   word: string | null
+  language: string | null
   meaning: string | null
+  translation: string | null
   example: string | null
   pronunciation: string | null
   createdAt: Date | null
@@ -44,8 +50,11 @@ export type DictionaryWordMaxAggregateOutputType = {
 
 export type DictionaryWordCountAggregateOutputType = {
   id: number
+  userId: number
   word: number
+  language: number
   meaning: number
+  translation: number
   example: number
   pronunciation: number
   synonyms: number
@@ -57,8 +66,11 @@ export type DictionaryWordCountAggregateOutputType = {
 
 export type DictionaryWordMinAggregateInputType = {
   id?: true
+  userId?: true
   word?: true
+  language?: true
   meaning?: true
+  translation?: true
   example?: true
   pronunciation?: true
   createdAt?: true
@@ -66,8 +78,11 @@ export type DictionaryWordMinAggregateInputType = {
 
 export type DictionaryWordMaxAggregateInputType = {
   id?: true
+  userId?: true
   word?: true
+  language?: true
   meaning?: true
+  translation?: true
   example?: true
   pronunciation?: true
   createdAt?: true
@@ -75,8 +90,11 @@ export type DictionaryWordMaxAggregateInputType = {
 
 export type DictionaryWordCountAggregateInputType = {
   id?: true
+  userId?: true
   word?: true
+  language?: true
   meaning?: true
+  translation?: true
   example?: true
   pronunciation?: true
   synonyms?: true
@@ -159,9 +177,12 @@ export type DictionaryWordGroupByArgs<ExtArgs extends runtime.Types.Extensions.I
 
 export type DictionaryWordGroupByOutputType = {
   id: string
+  userId: string | null
   word: string
+  language: string
   meaning: string
-  example: string | null
+  translation: string
+  example: string
   pronunciation: string | null
   synonyms: runtime.JsonValue | null
   antonyms: runtime.JsonValue | null
@@ -191,45 +212,60 @@ export type DictionaryWordWhereInput = {
   OR?: Prisma.DictionaryWordWhereInput[]
   NOT?: Prisma.DictionaryWordWhereInput | Prisma.DictionaryWordWhereInput[]
   id?: Prisma.StringFilter<"DictionaryWord"> | string
+  userId?: Prisma.StringNullableFilter<"DictionaryWord"> | string | null
   word?: Prisma.StringFilter<"DictionaryWord"> | string
+  language?: Prisma.StringFilter<"DictionaryWord"> | string
   meaning?: Prisma.StringFilter<"DictionaryWord"> | string
-  example?: Prisma.StringNullableFilter<"DictionaryWord"> | string | null
+  translation?: Prisma.StringFilter<"DictionaryWord"> | string
+  example?: Prisma.StringFilter<"DictionaryWord"> | string
   pronunciation?: Prisma.StringNullableFilter<"DictionaryWord"> | string | null
   synonyms?: Prisma.JsonNullableFilter<"DictionaryWord">
   antonyms?: Prisma.JsonNullableFilter<"DictionaryWord">
   createdAt?: Prisma.DateTimeFilter<"DictionaryWord"> | Date | string
+  user?: Prisma.XOR<Prisma.UserNullableScalarRelationFilter, Prisma.UserWhereInput> | null
 }
 
 export type DictionaryWordOrderByWithRelationInput = {
   id?: Prisma.SortOrder
+  userId?: Prisma.SortOrderInput | Prisma.SortOrder
   word?: Prisma.SortOrder
+  language?: Prisma.SortOrder
   meaning?: Prisma.SortOrder
-  example?: Prisma.SortOrderInput | Prisma.SortOrder
+  translation?: Prisma.SortOrder
+  example?: Prisma.SortOrder
   pronunciation?: Prisma.SortOrderInput | Prisma.SortOrder
   synonyms?: Prisma.SortOrderInput | Prisma.SortOrder
   antonyms?: Prisma.SortOrderInput | Prisma.SortOrder
   createdAt?: Prisma.SortOrder
+  user?: Prisma.UserOrderByWithRelationInput
 }
 
 export type DictionaryWordWhereUniqueInput = Prisma.AtLeast<{
   id?: string
-  word?: string
   AND?: Prisma.DictionaryWordWhereInput | Prisma.DictionaryWordWhereInput[]
   OR?: Prisma.DictionaryWordWhereInput[]
   NOT?: Prisma.DictionaryWordWhereInput | Prisma.DictionaryWordWhereInput[]
+  userId?: Prisma.StringNullableFilter<"DictionaryWord"> | string | null
+  word?: Prisma.StringFilter<"DictionaryWord"> | string
+  language?: Prisma.StringFilter<"DictionaryWord"> | string
   meaning?: Prisma.StringFilter<"DictionaryWord"> | string
-  example?: Prisma.StringNullableFilter<"DictionaryWord"> | string | null
+  translation?: Prisma.StringFilter<"DictionaryWord"> | string
+  example?: Prisma.StringFilter<"DictionaryWord"> | string
   pronunciation?: Prisma.StringNullableFilter<"DictionaryWord"> | string | null
   synonyms?: Prisma.JsonNullableFilter<"DictionaryWord">
   antonyms?: Prisma.JsonNullableFilter<"DictionaryWord">
   createdAt?: Prisma.DateTimeFilter<"DictionaryWord"> | Date | string
-}, "id" | "word">
+  user?: Prisma.XOR<Prisma.UserNullableScalarRelationFilter, Prisma.UserWhereInput> | null
+}, "id">
 
 export type DictionaryWordOrderByWithAggregationInput = {
   id?: Prisma.SortOrder
+  userId?: Prisma.SortOrderInput | Prisma.SortOrder
   word?: Prisma.SortOrder
+  language?: Prisma.SortOrder
   meaning?: Prisma.SortOrder
-  example?: Prisma.SortOrderInput | Prisma.SortOrder
+  translation?: Prisma.SortOrder
+  example?: Prisma.SortOrder
   pronunciation?: Prisma.SortOrderInput | Prisma.SortOrder
   synonyms?: Prisma.SortOrderInput | Prisma.SortOrder
   antonyms?: Prisma.SortOrderInput | Prisma.SortOrder
@@ -244,9 +280,12 @@ export type DictionaryWordScalarWhereWithAggregatesInput = {
   OR?: Prisma.DictionaryWordScalarWhereWithAggregatesInput[]
   NOT?: Prisma.DictionaryWordScalarWhereWithAggregatesInput | Prisma.DictionaryWordScalarWhereWithAggregatesInput[]
   id?: Prisma.StringWithAggregatesFilter<"DictionaryWord"> | string
+  userId?: Prisma.StringNullableWithAggregatesFilter<"DictionaryWord"> | string | null
   word?: Prisma.StringWithAggregatesFilter<"DictionaryWord"> | string
+  language?: Prisma.StringWithAggregatesFilter<"DictionaryWord"> | string
   meaning?: Prisma.StringWithAggregatesFilter<"DictionaryWord"> | string
-  example?: Prisma.StringNullableWithAggregatesFilter<"DictionaryWord"> | string | null
+  translation?: Prisma.StringWithAggregatesFilter<"DictionaryWord"> | string
+  example?: Prisma.StringWithAggregatesFilter<"DictionaryWord"> | string
   pronunciation?: Prisma.StringNullableWithAggregatesFilter<"DictionaryWord"> | string | null
   synonyms?: Prisma.JsonNullableWithAggregatesFilter<"DictionaryWord">
   antonyms?: Prisma.JsonNullableWithAggregatesFilter<"DictionaryWord">
@@ -256,19 +295,25 @@ export type DictionaryWordScalarWhereWithAggregatesInput = {
 export type DictionaryWordCreateInput = {
   id?: string
   word: string
+  language: string
   meaning: string
-  example?: string | null
+  translation: string
+  example: string
   pronunciation?: string | null
   synonyms?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
   antonyms?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
   createdAt?: Date | string
+  user?: Prisma.UserCreateNestedOneWithoutDictionaryWordsInput
 }
 
 export type DictionaryWordUncheckedCreateInput = {
   id?: string
+  userId?: string | null
   word: string
+  language: string
   meaning: string
-  example?: string | null
+  translation: string
+  example: string
   pronunciation?: string | null
   synonyms?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
   antonyms?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
@@ -278,19 +323,25 @@ export type DictionaryWordUncheckedCreateInput = {
 export type DictionaryWordUpdateInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   word?: Prisma.StringFieldUpdateOperationsInput | string
+  language?: Prisma.StringFieldUpdateOperationsInput | string
   meaning?: Prisma.StringFieldUpdateOperationsInput | string
-  example?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  translation?: Prisma.StringFieldUpdateOperationsInput | string
+  example?: Prisma.StringFieldUpdateOperationsInput | string
   pronunciation?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   synonyms?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
   antonyms?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  user?: Prisma.UserUpdateOneWithoutDictionaryWordsNestedInput
 }
 
 export type DictionaryWordUncheckedUpdateInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
+  userId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   word?: Prisma.StringFieldUpdateOperationsInput | string
+  language?: Prisma.StringFieldUpdateOperationsInput | string
   meaning?: Prisma.StringFieldUpdateOperationsInput | string
-  example?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  translation?: Prisma.StringFieldUpdateOperationsInput | string
+  example?: Prisma.StringFieldUpdateOperationsInput | string
   pronunciation?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   synonyms?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
   antonyms?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
@@ -299,9 +350,12 @@ export type DictionaryWordUncheckedUpdateInput = {
 
 export type DictionaryWordCreateManyInput = {
   id?: string
+  userId?: string | null
   word: string
+  language: string
   meaning: string
-  example?: string | null
+  translation: string
+  example: string
   pronunciation?: string | null
   synonyms?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
   antonyms?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
@@ -311,8 +365,10 @@ export type DictionaryWordCreateManyInput = {
 export type DictionaryWordUpdateManyMutationInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   word?: Prisma.StringFieldUpdateOperationsInput | string
+  language?: Prisma.StringFieldUpdateOperationsInput | string
   meaning?: Prisma.StringFieldUpdateOperationsInput | string
-  example?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  translation?: Prisma.StringFieldUpdateOperationsInput | string
+  example?: Prisma.StringFieldUpdateOperationsInput | string
   pronunciation?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   synonyms?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
   antonyms?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
@@ -321,19 +377,35 @@ export type DictionaryWordUpdateManyMutationInput = {
 
 export type DictionaryWordUncheckedUpdateManyInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
+  userId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   word?: Prisma.StringFieldUpdateOperationsInput | string
+  language?: Prisma.StringFieldUpdateOperationsInput | string
   meaning?: Prisma.StringFieldUpdateOperationsInput | string
-  example?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  translation?: Prisma.StringFieldUpdateOperationsInput | string
+  example?: Prisma.StringFieldUpdateOperationsInput | string
   pronunciation?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   synonyms?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
   antonyms?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
 
+export type DictionaryWordListRelationFilter = {
+  every?: Prisma.DictionaryWordWhereInput
+  some?: Prisma.DictionaryWordWhereInput
+  none?: Prisma.DictionaryWordWhereInput
+}
+
+export type DictionaryWordOrderByRelationAggregateInput = {
+  _count?: Prisma.SortOrder
+}
+
 export type DictionaryWordCountOrderByAggregateInput = {
   id?: Prisma.SortOrder
+  userId?: Prisma.SortOrder
   word?: Prisma.SortOrder
+  language?: Prisma.SortOrder
   meaning?: Prisma.SortOrder
+  translation?: Prisma.SortOrder
   example?: Prisma.SortOrder
   pronunciation?: Prisma.SortOrder
   synonyms?: Prisma.SortOrder
@@ -343,8 +415,11 @@ export type DictionaryWordCountOrderByAggregateInput = {
 
 export type DictionaryWordMaxOrderByAggregateInput = {
   id?: Prisma.SortOrder
+  userId?: Prisma.SortOrder
   word?: Prisma.SortOrder
+  language?: Prisma.SortOrder
   meaning?: Prisma.SortOrder
+  translation?: Prisma.SortOrder
   example?: Prisma.SortOrder
   pronunciation?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
@@ -352,52 +427,233 @@ export type DictionaryWordMaxOrderByAggregateInput = {
 
 export type DictionaryWordMinOrderByAggregateInput = {
   id?: Prisma.SortOrder
+  userId?: Prisma.SortOrder
   word?: Prisma.SortOrder
+  language?: Prisma.SortOrder
   meaning?: Prisma.SortOrder
+  translation?: Prisma.SortOrder
   example?: Prisma.SortOrder
   pronunciation?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
+}
+
+export type DictionaryWordCreateNestedManyWithoutUserInput = {
+  create?: Prisma.XOR<Prisma.DictionaryWordCreateWithoutUserInput, Prisma.DictionaryWordUncheckedCreateWithoutUserInput> | Prisma.DictionaryWordCreateWithoutUserInput[] | Prisma.DictionaryWordUncheckedCreateWithoutUserInput[]
+  connectOrCreate?: Prisma.DictionaryWordCreateOrConnectWithoutUserInput | Prisma.DictionaryWordCreateOrConnectWithoutUserInput[]
+  createMany?: Prisma.DictionaryWordCreateManyUserInputEnvelope
+  connect?: Prisma.DictionaryWordWhereUniqueInput | Prisma.DictionaryWordWhereUniqueInput[]
+}
+
+export type DictionaryWordUncheckedCreateNestedManyWithoutUserInput = {
+  create?: Prisma.XOR<Prisma.DictionaryWordCreateWithoutUserInput, Prisma.DictionaryWordUncheckedCreateWithoutUserInput> | Prisma.DictionaryWordCreateWithoutUserInput[] | Prisma.DictionaryWordUncheckedCreateWithoutUserInput[]
+  connectOrCreate?: Prisma.DictionaryWordCreateOrConnectWithoutUserInput | Prisma.DictionaryWordCreateOrConnectWithoutUserInput[]
+  createMany?: Prisma.DictionaryWordCreateManyUserInputEnvelope
+  connect?: Prisma.DictionaryWordWhereUniqueInput | Prisma.DictionaryWordWhereUniqueInput[]
+}
+
+export type DictionaryWordUpdateManyWithoutUserNestedInput = {
+  create?: Prisma.XOR<Prisma.DictionaryWordCreateWithoutUserInput, Prisma.DictionaryWordUncheckedCreateWithoutUserInput> | Prisma.DictionaryWordCreateWithoutUserInput[] | Prisma.DictionaryWordUncheckedCreateWithoutUserInput[]
+  connectOrCreate?: Prisma.DictionaryWordCreateOrConnectWithoutUserInput | Prisma.DictionaryWordCreateOrConnectWithoutUserInput[]
+  upsert?: Prisma.DictionaryWordUpsertWithWhereUniqueWithoutUserInput | Prisma.DictionaryWordUpsertWithWhereUniqueWithoutUserInput[]
+  createMany?: Prisma.DictionaryWordCreateManyUserInputEnvelope
+  set?: Prisma.DictionaryWordWhereUniqueInput | Prisma.DictionaryWordWhereUniqueInput[]
+  disconnect?: Prisma.DictionaryWordWhereUniqueInput | Prisma.DictionaryWordWhereUniqueInput[]
+  delete?: Prisma.DictionaryWordWhereUniqueInput | Prisma.DictionaryWordWhereUniqueInput[]
+  connect?: Prisma.DictionaryWordWhereUniqueInput | Prisma.DictionaryWordWhereUniqueInput[]
+  update?: Prisma.DictionaryWordUpdateWithWhereUniqueWithoutUserInput | Prisma.DictionaryWordUpdateWithWhereUniqueWithoutUserInput[]
+  updateMany?: Prisma.DictionaryWordUpdateManyWithWhereWithoutUserInput | Prisma.DictionaryWordUpdateManyWithWhereWithoutUserInput[]
+  deleteMany?: Prisma.DictionaryWordScalarWhereInput | Prisma.DictionaryWordScalarWhereInput[]
+}
+
+export type DictionaryWordUncheckedUpdateManyWithoutUserNestedInput = {
+  create?: Prisma.XOR<Prisma.DictionaryWordCreateWithoutUserInput, Prisma.DictionaryWordUncheckedCreateWithoutUserInput> | Prisma.DictionaryWordCreateWithoutUserInput[] | Prisma.DictionaryWordUncheckedCreateWithoutUserInput[]
+  connectOrCreate?: Prisma.DictionaryWordCreateOrConnectWithoutUserInput | Prisma.DictionaryWordCreateOrConnectWithoutUserInput[]
+  upsert?: Prisma.DictionaryWordUpsertWithWhereUniqueWithoutUserInput | Prisma.DictionaryWordUpsertWithWhereUniqueWithoutUserInput[]
+  createMany?: Prisma.DictionaryWordCreateManyUserInputEnvelope
+  set?: Prisma.DictionaryWordWhereUniqueInput | Prisma.DictionaryWordWhereUniqueInput[]
+  disconnect?: Prisma.DictionaryWordWhereUniqueInput | Prisma.DictionaryWordWhereUniqueInput[]
+  delete?: Prisma.DictionaryWordWhereUniqueInput | Prisma.DictionaryWordWhereUniqueInput[]
+  connect?: Prisma.DictionaryWordWhereUniqueInput | Prisma.DictionaryWordWhereUniqueInput[]
+  update?: Prisma.DictionaryWordUpdateWithWhereUniqueWithoutUserInput | Prisma.DictionaryWordUpdateWithWhereUniqueWithoutUserInput[]
+  updateMany?: Prisma.DictionaryWordUpdateManyWithWhereWithoutUserInput | Prisma.DictionaryWordUpdateManyWithWhereWithoutUserInput[]
+  deleteMany?: Prisma.DictionaryWordScalarWhereInput | Prisma.DictionaryWordScalarWhereInput[]
+}
+
+export type DictionaryWordCreateWithoutUserInput = {
+  id?: string
+  word: string
+  language: string
+  meaning: string
+  translation: string
+  example: string
+  pronunciation?: string | null
+  synonyms?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  antonyms?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  createdAt?: Date | string
+}
+
+export type DictionaryWordUncheckedCreateWithoutUserInput = {
+  id?: string
+  word: string
+  language: string
+  meaning: string
+  translation: string
+  example: string
+  pronunciation?: string | null
+  synonyms?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  antonyms?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  createdAt?: Date | string
+}
+
+export type DictionaryWordCreateOrConnectWithoutUserInput = {
+  where: Prisma.DictionaryWordWhereUniqueInput
+  create: Prisma.XOR<Prisma.DictionaryWordCreateWithoutUserInput, Prisma.DictionaryWordUncheckedCreateWithoutUserInput>
+}
+
+export type DictionaryWordCreateManyUserInputEnvelope = {
+  data: Prisma.DictionaryWordCreateManyUserInput | Prisma.DictionaryWordCreateManyUserInput[]
+  skipDuplicates?: boolean
+}
+
+export type DictionaryWordUpsertWithWhereUniqueWithoutUserInput = {
+  where: Prisma.DictionaryWordWhereUniqueInput
+  update: Prisma.XOR<Prisma.DictionaryWordUpdateWithoutUserInput, Prisma.DictionaryWordUncheckedUpdateWithoutUserInput>
+  create: Prisma.XOR<Prisma.DictionaryWordCreateWithoutUserInput, Prisma.DictionaryWordUncheckedCreateWithoutUserInput>
+}
+
+export type DictionaryWordUpdateWithWhereUniqueWithoutUserInput = {
+  where: Prisma.DictionaryWordWhereUniqueInput
+  data: Prisma.XOR<Prisma.DictionaryWordUpdateWithoutUserInput, Prisma.DictionaryWordUncheckedUpdateWithoutUserInput>
+}
+
+export type DictionaryWordUpdateManyWithWhereWithoutUserInput = {
+  where: Prisma.DictionaryWordScalarWhereInput
+  data: Prisma.XOR<Prisma.DictionaryWordUpdateManyMutationInput, Prisma.DictionaryWordUncheckedUpdateManyWithoutUserInput>
+}
+
+export type DictionaryWordScalarWhereInput = {
+  AND?: Prisma.DictionaryWordScalarWhereInput | Prisma.DictionaryWordScalarWhereInput[]
+  OR?: Prisma.DictionaryWordScalarWhereInput[]
+  NOT?: Prisma.DictionaryWordScalarWhereInput | Prisma.DictionaryWordScalarWhereInput[]
+  id?: Prisma.StringFilter<"DictionaryWord"> | string
+  userId?: Prisma.StringNullableFilter<"DictionaryWord"> | string | null
+  word?: Prisma.StringFilter<"DictionaryWord"> | string
+  language?: Prisma.StringFilter<"DictionaryWord"> | string
+  meaning?: Prisma.StringFilter<"DictionaryWord"> | string
+  translation?: Prisma.StringFilter<"DictionaryWord"> | string
+  example?: Prisma.StringFilter<"DictionaryWord"> | string
+  pronunciation?: Prisma.StringNullableFilter<"DictionaryWord"> | string | null
+  synonyms?: Prisma.JsonNullableFilter<"DictionaryWord">
+  antonyms?: Prisma.JsonNullableFilter<"DictionaryWord">
+  createdAt?: Prisma.DateTimeFilter<"DictionaryWord"> | Date | string
+}
+
+export type DictionaryWordCreateManyUserInput = {
+  id?: string
+  word: string
+  language: string
+  meaning: string
+  translation: string
+  example: string
+  pronunciation?: string | null
+  synonyms?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  antonyms?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  createdAt?: Date | string
+}
+
+export type DictionaryWordUpdateWithoutUserInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  word?: Prisma.StringFieldUpdateOperationsInput | string
+  language?: Prisma.StringFieldUpdateOperationsInput | string
+  meaning?: Prisma.StringFieldUpdateOperationsInput | string
+  translation?: Prisma.StringFieldUpdateOperationsInput | string
+  example?: Prisma.StringFieldUpdateOperationsInput | string
+  pronunciation?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  synonyms?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  antonyms?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+}
+
+export type DictionaryWordUncheckedUpdateWithoutUserInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  word?: Prisma.StringFieldUpdateOperationsInput | string
+  language?: Prisma.StringFieldUpdateOperationsInput | string
+  meaning?: Prisma.StringFieldUpdateOperationsInput | string
+  translation?: Prisma.StringFieldUpdateOperationsInput | string
+  example?: Prisma.StringFieldUpdateOperationsInput | string
+  pronunciation?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  synonyms?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  antonyms?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+}
+
+export type DictionaryWordUncheckedUpdateManyWithoutUserInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  word?: Prisma.StringFieldUpdateOperationsInput | string
+  language?: Prisma.StringFieldUpdateOperationsInput | string
+  meaning?: Prisma.StringFieldUpdateOperationsInput | string
+  translation?: Prisma.StringFieldUpdateOperationsInput | string
+  example?: Prisma.StringFieldUpdateOperationsInput | string
+  pronunciation?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  synonyms?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  antonyms?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
 
 
 
 export type DictionaryWordSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
   id?: boolean
+  userId?: boolean
   word?: boolean
+  language?: boolean
   meaning?: boolean
+  translation?: boolean
   example?: boolean
   pronunciation?: boolean
   synonyms?: boolean
   antonyms?: boolean
   createdAt?: boolean
+  user?: boolean | Prisma.DictionaryWord$userArgs<ExtArgs>
 }, ExtArgs["result"]["dictionaryWord"]>
 
 export type DictionaryWordSelectCreateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
   id?: boolean
+  userId?: boolean
   word?: boolean
+  language?: boolean
   meaning?: boolean
+  translation?: boolean
   example?: boolean
   pronunciation?: boolean
   synonyms?: boolean
   antonyms?: boolean
   createdAt?: boolean
+  user?: boolean | Prisma.DictionaryWord$userArgs<ExtArgs>
 }, ExtArgs["result"]["dictionaryWord"]>
 
 export type DictionaryWordSelectUpdateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
   id?: boolean
+  userId?: boolean
   word?: boolean
+  language?: boolean
   meaning?: boolean
+  translation?: boolean
   example?: boolean
   pronunciation?: boolean
   synonyms?: boolean
   antonyms?: boolean
   createdAt?: boolean
+  user?: boolean | Prisma.DictionaryWord$userArgs<ExtArgs>
 }, ExtArgs["result"]["dictionaryWord"]>
 
 export type DictionaryWordSelectScalar = {
   id?: boolean
+  userId?: boolean
   word?: boolean
+  language?: boolean
   meaning?: boolean
+  translation?: boolean
   example?: boolean
   pronunciation?: boolean
   synonyms?: boolean
@@ -405,16 +661,30 @@ export type DictionaryWordSelectScalar = {
   createdAt?: boolean
 }
 
-export type DictionaryWordOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "word" | "meaning" | "example" | "pronunciation" | "synonyms" | "antonyms" | "createdAt", ExtArgs["result"]["dictionaryWord"]>
+export type DictionaryWordOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "userId" | "word" | "language" | "meaning" | "translation" | "example" | "pronunciation" | "synonyms" | "antonyms" | "createdAt", ExtArgs["result"]["dictionaryWord"]>
+export type DictionaryWordInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  user?: boolean | Prisma.DictionaryWord$userArgs<ExtArgs>
+}
+export type DictionaryWordIncludeCreateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  user?: boolean | Prisma.DictionaryWord$userArgs<ExtArgs>
+}
+export type DictionaryWordIncludeUpdateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  user?: boolean | Prisma.DictionaryWord$userArgs<ExtArgs>
+}
 
 export type $DictionaryWordPayload<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   name: "DictionaryWord"
-  objects: {}
+  objects: {
+    user: Prisma.$UserPayload<ExtArgs> | null
+  }
   scalars: runtime.Types.Extensions.GetPayloadResult<{
     id: string
+    userId: string | null
     word: string
+    language: string
     meaning: string
-    example: string | null
+    translation: string
+    example: string
     pronunciation: string | null
     synonyms: runtime.JsonValue | null
     antonyms: runtime.JsonValue | null
@@ -813,6 +1083,7 @@ readonly fields: DictionaryWordFieldRefs;
  */
 export interface Prisma__DictionaryWordClient<T, Null = never, ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
   readonly [Symbol.toStringTag]: "PrismaPromise"
+  user<T extends Prisma.DictionaryWord$userArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.DictionaryWord$userArgs<ExtArgs>>): Prisma.Prisma__UserClient<runtime.Types.Result.GetResult<Prisma.$UserPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
   /**
    * Attaches callbacks for the resolution and/or rejection of the Promise.
    * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -843,8 +1114,11 @@ export interface Prisma__DictionaryWordClient<T, Null = never, ExtArgs extends r
  */
 export interface DictionaryWordFieldRefs {
   readonly id: Prisma.FieldRef<"DictionaryWord", 'String'>
+  readonly userId: Prisma.FieldRef<"DictionaryWord", 'String'>
   readonly word: Prisma.FieldRef<"DictionaryWord", 'String'>
+  readonly language: Prisma.FieldRef<"DictionaryWord", 'String'>
   readonly meaning: Prisma.FieldRef<"DictionaryWord", 'String'>
+  readonly translation: Prisma.FieldRef<"DictionaryWord", 'String'>
   readonly example: Prisma.FieldRef<"DictionaryWord", 'String'>
   readonly pronunciation: Prisma.FieldRef<"DictionaryWord", 'String'>
   readonly synonyms: Prisma.FieldRef<"DictionaryWord", 'Json'>
@@ -867,6 +1141,10 @@ export type DictionaryWordFindUniqueArgs<ExtArgs extends runtime.Types.Extension
    */
   omit?: Prisma.DictionaryWordOmit<ExtArgs> | null
   /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.DictionaryWordInclude<ExtArgs> | null
+  /**
    * Filter, which DictionaryWord to fetch.
    */
   where: Prisma.DictionaryWordWhereUniqueInput
@@ -885,6 +1163,10 @@ export type DictionaryWordFindUniqueOrThrowArgs<ExtArgs extends runtime.Types.Ex
    */
   omit?: Prisma.DictionaryWordOmit<ExtArgs> | null
   /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.DictionaryWordInclude<ExtArgs> | null
+  /**
    * Filter, which DictionaryWord to fetch.
    */
   where: Prisma.DictionaryWordWhereUniqueInput
@@ -902,6 +1184,10 @@ export type DictionaryWordFindFirstArgs<ExtArgs extends runtime.Types.Extensions
    * Omit specific fields from the DictionaryWord
    */
   omit?: Prisma.DictionaryWordOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.DictionaryWordInclude<ExtArgs> | null
   /**
    * Filter, which DictionaryWord to fetch.
    */
@@ -951,6 +1237,10 @@ export type DictionaryWordFindFirstOrThrowArgs<ExtArgs extends runtime.Types.Ext
    */
   omit?: Prisma.DictionaryWordOmit<ExtArgs> | null
   /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.DictionaryWordInclude<ExtArgs> | null
+  /**
    * Filter, which DictionaryWord to fetch.
    */
   where?: Prisma.DictionaryWordWhereInput
@@ -998,6 +1288,10 @@ export type DictionaryWordFindManyArgs<ExtArgs extends runtime.Types.Extensions.
    * Omit specific fields from the DictionaryWord
    */
   omit?: Prisma.DictionaryWordOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.DictionaryWordInclude<ExtArgs> | null
   /**
    * Filter, which DictionaryWords to fetch.
    */
@@ -1047,6 +1341,10 @@ export type DictionaryWordCreateArgs<ExtArgs extends runtime.Types.Extensions.In
    */
   omit?: Prisma.DictionaryWordOmit<ExtArgs> | null
   /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.DictionaryWordInclude<ExtArgs> | null
+  /**
    * The data needed to create a DictionaryWord.
    */
   data: Prisma.XOR<Prisma.DictionaryWordCreateInput, Prisma.DictionaryWordUncheckedCreateInput>
@@ -1080,6 +1378,10 @@ export type DictionaryWordCreateManyAndReturnArgs<ExtArgs extends runtime.Types.
    */
   data: Prisma.DictionaryWordCreateManyInput | Prisma.DictionaryWordCreateManyInput[]
   skipDuplicates?: boolean
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.DictionaryWordIncludeCreateManyAndReturn<ExtArgs> | null
 }
 
 /**
@@ -1094,6 +1396,10 @@ export type DictionaryWordUpdateArgs<ExtArgs extends runtime.Types.Extensions.In
    * Omit specific fields from the DictionaryWord
    */
   omit?: Prisma.DictionaryWordOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.DictionaryWordInclude<ExtArgs> | null
   /**
    * The data needed to update a DictionaryWord.
    */
@@ -1146,6 +1452,10 @@ export type DictionaryWordUpdateManyAndReturnArgs<ExtArgs extends runtime.Types.
    * Limit how many DictionaryWords to update.
    */
   limit?: number
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.DictionaryWordIncludeUpdateManyAndReturn<ExtArgs> | null
 }
 
 /**
@@ -1160,6 +1470,10 @@ export type DictionaryWordUpsertArgs<ExtArgs extends runtime.Types.Extensions.In
    * Omit specific fields from the DictionaryWord
    */
   omit?: Prisma.DictionaryWordOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.DictionaryWordInclude<ExtArgs> | null
   /**
    * The filter to search for the DictionaryWord to update in case it exists.
    */
@@ -1187,6 +1501,10 @@ export type DictionaryWordDeleteArgs<ExtArgs extends runtime.Types.Extensions.In
    */
   omit?: Prisma.DictionaryWordOmit<ExtArgs> | null
   /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.DictionaryWordInclude<ExtArgs> | null
+  /**
    * Filter which DictionaryWord to delete.
    */
   where: Prisma.DictionaryWordWhereUniqueInput
@@ -1207,6 +1525,25 @@ export type DictionaryWordDeleteManyArgs<ExtArgs extends runtime.Types.Extension
 }
 
 /**
+ * DictionaryWord.user
+ */
+export type DictionaryWord$userArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the User
+   */
+  select?: Prisma.UserSelect<ExtArgs> | null
+  /**
+   * Omit specific fields from the User
+   */
+  omit?: Prisma.UserOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.UserInclude<ExtArgs> | null
+  where?: Prisma.UserWhereInput
+}
+
+/**
  * DictionaryWord without action
  */
 export type DictionaryWordDefaultArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
@@ -1218,4 +1555,8 @@ export type DictionaryWordDefaultArgs<ExtArgs extends runtime.Types.Extensions.I
    * Omit specific fields from the DictionaryWord
    */
   omit?: Prisma.DictionaryWordOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.DictionaryWordInclude<ExtArgs> | null
 }

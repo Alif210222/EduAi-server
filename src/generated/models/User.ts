@@ -230,6 +230,8 @@ export type UserWhereInput = {
   quizAttempts?: Prisma.QuizAttemptListRelationFilter
   chatbotHistory?: Prisma.ChatbotHistoryListRelationFilter
   certificates?: Prisma.CertificateListRelationFilter
+  notification?: Prisma.NotificationListRelationFilter
+  dictionaryWords?: Prisma.DictionaryWordListRelationFilter
   payments?: Prisma.PaymentListRelationFilter
 }
 
@@ -252,6 +254,8 @@ export type UserOrderByWithRelationInput = {
   quizAttempts?: Prisma.QuizAttemptOrderByRelationAggregateInput
   chatbotHistory?: Prisma.ChatbotHistoryOrderByRelationAggregateInput
   certificates?: Prisma.CertificateOrderByRelationAggregateInput
+  notification?: Prisma.NotificationOrderByRelationAggregateInput
+  dictionaryWords?: Prisma.DictionaryWordOrderByRelationAggregateInput
   payments?: Prisma.PaymentOrderByRelationAggregateInput
 }
 
@@ -277,6 +281,8 @@ export type UserWhereUniqueInput = Prisma.AtLeast<{
   quizAttempts?: Prisma.QuizAttemptListRelationFilter
   chatbotHistory?: Prisma.ChatbotHistoryListRelationFilter
   certificates?: Prisma.CertificateListRelationFilter
+  notification?: Prisma.NotificationListRelationFilter
+  dictionaryWords?: Prisma.DictionaryWordListRelationFilter
   payments?: Prisma.PaymentListRelationFilter
 }, "id" | "email" | "firebaseUid">
 
@@ -331,6 +337,8 @@ export type UserCreateInput = {
   quizAttempts?: Prisma.QuizAttemptCreateNestedManyWithoutUserInput
   chatbotHistory?: Prisma.ChatbotHistoryCreateNestedManyWithoutUserInput
   certificates?: Prisma.CertificateCreateNestedManyWithoutUserInput
+  notification?: Prisma.NotificationCreateNestedManyWithoutUserInput
+  dictionaryWords?: Prisma.DictionaryWordCreateNestedManyWithoutUserInput
   payments?: Prisma.PaymentCreateNestedManyWithoutUserInput
 }
 
@@ -353,6 +361,8 @@ export type UserUncheckedCreateInput = {
   quizAttempts?: Prisma.QuizAttemptUncheckedCreateNestedManyWithoutUserInput
   chatbotHistory?: Prisma.ChatbotHistoryUncheckedCreateNestedManyWithoutUserInput
   certificates?: Prisma.CertificateUncheckedCreateNestedManyWithoutUserInput
+  notification?: Prisma.NotificationUncheckedCreateNestedManyWithoutUserInput
+  dictionaryWords?: Prisma.DictionaryWordUncheckedCreateNestedManyWithoutUserInput
   payments?: Prisma.PaymentUncheckedCreateNestedManyWithoutUserInput
 }
 
@@ -375,6 +385,8 @@ export type UserUpdateInput = {
   quizAttempts?: Prisma.QuizAttemptUpdateManyWithoutUserNestedInput
   chatbotHistory?: Prisma.ChatbotHistoryUpdateManyWithoutUserNestedInput
   certificates?: Prisma.CertificateUpdateManyWithoutUserNestedInput
+  notification?: Prisma.NotificationUpdateManyWithoutUserNestedInput
+  dictionaryWords?: Prisma.DictionaryWordUpdateManyWithoutUserNestedInput
   payments?: Prisma.PaymentUpdateManyWithoutUserNestedInput
 }
 
@@ -397,6 +409,8 @@ export type UserUncheckedUpdateInput = {
   quizAttempts?: Prisma.QuizAttemptUncheckedUpdateManyWithoutUserNestedInput
   chatbotHistory?: Prisma.ChatbotHistoryUncheckedUpdateManyWithoutUserNestedInput
   certificates?: Prisma.CertificateUncheckedUpdateManyWithoutUserNestedInput
+  notification?: Prisma.NotificationUncheckedUpdateManyWithoutUserNestedInput
+  dictionaryWords?: Prisma.DictionaryWordUncheckedUpdateManyWithoutUserNestedInput
   payments?: Prisma.PaymentUncheckedUpdateManyWithoutUserNestedInput
 }
 
@@ -481,6 +495,11 @@ export type UserMinOrderByAggregateInput = {
 export type UserScalarRelationFilter = {
   is?: Prisma.UserWhereInput
   isNot?: Prisma.UserWhereInput
+}
+
+export type UserNullableScalarRelationFilter = {
+  is?: Prisma.UserWhereInput | null
+  isNot?: Prisma.UserWhereInput | null
 }
 
 export type StringFieldUpdateOperationsInput = {
@@ -615,6 +634,22 @@ export type UserUpdateOneRequiredWithoutSchedulesNestedInput = {
   update?: Prisma.XOR<Prisma.XOR<Prisma.UserUpdateToOneWithWhereWithoutSchedulesInput, Prisma.UserUpdateWithoutSchedulesInput>, Prisma.UserUncheckedUpdateWithoutSchedulesInput>
 }
 
+export type UserCreateNestedOneWithoutDictionaryWordsInput = {
+  create?: Prisma.XOR<Prisma.UserCreateWithoutDictionaryWordsInput, Prisma.UserUncheckedCreateWithoutDictionaryWordsInput>
+  connectOrCreate?: Prisma.UserCreateOrConnectWithoutDictionaryWordsInput
+  connect?: Prisma.UserWhereUniqueInput
+}
+
+export type UserUpdateOneWithoutDictionaryWordsNestedInput = {
+  create?: Prisma.XOR<Prisma.UserCreateWithoutDictionaryWordsInput, Prisma.UserUncheckedCreateWithoutDictionaryWordsInput>
+  connectOrCreate?: Prisma.UserCreateOrConnectWithoutDictionaryWordsInput
+  upsert?: Prisma.UserUpsertWithoutDictionaryWordsInput
+  disconnect?: Prisma.UserWhereInput | boolean
+  delete?: Prisma.UserWhereInput | boolean
+  connect?: Prisma.UserWhereUniqueInput
+  update?: Prisma.XOR<Prisma.XOR<Prisma.UserUpdateToOneWithWhereWithoutDictionaryWordsInput, Prisma.UserUpdateWithoutDictionaryWordsInput>, Prisma.UserUncheckedUpdateWithoutDictionaryWordsInput>
+}
+
 export type UserCreateNestedOneWithoutCertificatesInput = {
   create?: Prisma.XOR<Prisma.UserCreateWithoutCertificatesInput, Prisma.UserUncheckedCreateWithoutCertificatesInput>
   connectOrCreate?: Prisma.UserCreateOrConnectWithoutCertificatesInput
@@ -627,6 +662,20 @@ export type UserUpdateOneRequiredWithoutCertificatesNestedInput = {
   upsert?: Prisma.UserUpsertWithoutCertificatesInput
   connect?: Prisma.UserWhereUniqueInput
   update?: Prisma.XOR<Prisma.XOR<Prisma.UserUpdateToOneWithWhereWithoutCertificatesInput, Prisma.UserUpdateWithoutCertificatesInput>, Prisma.UserUncheckedUpdateWithoutCertificatesInput>
+}
+
+export type UserCreateNestedOneWithoutNotificationInput = {
+  create?: Prisma.XOR<Prisma.UserCreateWithoutNotificationInput, Prisma.UserUncheckedCreateWithoutNotificationInput>
+  connectOrCreate?: Prisma.UserCreateOrConnectWithoutNotificationInput
+  connect?: Prisma.UserWhereUniqueInput
+}
+
+export type UserUpdateOneRequiredWithoutNotificationNestedInput = {
+  create?: Prisma.XOR<Prisma.UserCreateWithoutNotificationInput, Prisma.UserUncheckedCreateWithoutNotificationInput>
+  connectOrCreate?: Prisma.UserCreateOrConnectWithoutNotificationInput
+  upsert?: Prisma.UserUpsertWithoutNotificationInput
+  connect?: Prisma.UserWhereUniqueInput
+  update?: Prisma.XOR<Prisma.XOR<Prisma.UserUpdateToOneWithWhereWithoutNotificationInput, Prisma.UserUpdateWithoutNotificationInput>, Prisma.UserUncheckedUpdateWithoutNotificationInput>
 }
 
 export type UserCreateWithoutCoursesInput = {
@@ -647,6 +696,8 @@ export type UserCreateWithoutCoursesInput = {
   quizAttempts?: Prisma.QuizAttemptCreateNestedManyWithoutUserInput
   chatbotHistory?: Prisma.ChatbotHistoryCreateNestedManyWithoutUserInput
   certificates?: Prisma.CertificateCreateNestedManyWithoutUserInput
+  notification?: Prisma.NotificationCreateNestedManyWithoutUserInput
+  dictionaryWords?: Prisma.DictionaryWordCreateNestedManyWithoutUserInput
   payments?: Prisma.PaymentCreateNestedManyWithoutUserInput
 }
 
@@ -668,6 +719,8 @@ export type UserUncheckedCreateWithoutCoursesInput = {
   quizAttempts?: Prisma.QuizAttemptUncheckedCreateNestedManyWithoutUserInput
   chatbotHistory?: Prisma.ChatbotHistoryUncheckedCreateNestedManyWithoutUserInput
   certificates?: Prisma.CertificateUncheckedCreateNestedManyWithoutUserInput
+  notification?: Prisma.NotificationUncheckedCreateNestedManyWithoutUserInput
+  dictionaryWords?: Prisma.DictionaryWordUncheckedCreateNestedManyWithoutUserInput
   payments?: Prisma.PaymentUncheckedCreateNestedManyWithoutUserInput
 }
 
@@ -705,6 +758,8 @@ export type UserUpdateWithoutCoursesInput = {
   quizAttempts?: Prisma.QuizAttemptUpdateManyWithoutUserNestedInput
   chatbotHistory?: Prisma.ChatbotHistoryUpdateManyWithoutUserNestedInput
   certificates?: Prisma.CertificateUpdateManyWithoutUserNestedInput
+  notification?: Prisma.NotificationUpdateManyWithoutUserNestedInput
+  dictionaryWords?: Prisma.DictionaryWordUpdateManyWithoutUserNestedInput
   payments?: Prisma.PaymentUpdateManyWithoutUserNestedInput
 }
 
@@ -726,6 +781,8 @@ export type UserUncheckedUpdateWithoutCoursesInput = {
   quizAttempts?: Prisma.QuizAttemptUncheckedUpdateManyWithoutUserNestedInput
   chatbotHistory?: Prisma.ChatbotHistoryUncheckedUpdateManyWithoutUserNestedInput
   certificates?: Prisma.CertificateUncheckedUpdateManyWithoutUserNestedInput
+  notification?: Prisma.NotificationUncheckedUpdateManyWithoutUserNestedInput
+  dictionaryWords?: Prisma.DictionaryWordUncheckedUpdateManyWithoutUserNestedInput
   payments?: Prisma.PaymentUncheckedUpdateManyWithoutUserNestedInput
 }
 
@@ -747,6 +804,8 @@ export type UserCreateWithoutEnrollmentsInput = {
   quizAttempts?: Prisma.QuizAttemptCreateNestedManyWithoutUserInput
   chatbotHistory?: Prisma.ChatbotHistoryCreateNestedManyWithoutUserInput
   certificates?: Prisma.CertificateCreateNestedManyWithoutUserInput
+  notification?: Prisma.NotificationCreateNestedManyWithoutUserInput
+  dictionaryWords?: Prisma.DictionaryWordCreateNestedManyWithoutUserInput
   payments?: Prisma.PaymentCreateNestedManyWithoutUserInput
 }
 
@@ -768,6 +827,8 @@ export type UserUncheckedCreateWithoutEnrollmentsInput = {
   quizAttempts?: Prisma.QuizAttemptUncheckedCreateNestedManyWithoutUserInput
   chatbotHistory?: Prisma.ChatbotHistoryUncheckedCreateNestedManyWithoutUserInput
   certificates?: Prisma.CertificateUncheckedCreateNestedManyWithoutUserInput
+  notification?: Prisma.NotificationUncheckedCreateNestedManyWithoutUserInput
+  dictionaryWords?: Prisma.DictionaryWordUncheckedCreateNestedManyWithoutUserInput
   payments?: Prisma.PaymentUncheckedCreateNestedManyWithoutUserInput
 }
 
@@ -805,6 +866,8 @@ export type UserUpdateWithoutEnrollmentsInput = {
   quizAttempts?: Prisma.QuizAttemptUpdateManyWithoutUserNestedInput
   chatbotHistory?: Prisma.ChatbotHistoryUpdateManyWithoutUserNestedInput
   certificates?: Prisma.CertificateUpdateManyWithoutUserNestedInput
+  notification?: Prisma.NotificationUpdateManyWithoutUserNestedInput
+  dictionaryWords?: Prisma.DictionaryWordUpdateManyWithoutUserNestedInput
   payments?: Prisma.PaymentUpdateManyWithoutUserNestedInput
 }
 
@@ -826,6 +889,8 @@ export type UserUncheckedUpdateWithoutEnrollmentsInput = {
   quizAttempts?: Prisma.QuizAttemptUncheckedUpdateManyWithoutUserNestedInput
   chatbotHistory?: Prisma.ChatbotHistoryUncheckedUpdateManyWithoutUserNestedInput
   certificates?: Prisma.CertificateUncheckedUpdateManyWithoutUserNestedInput
+  notification?: Prisma.NotificationUncheckedUpdateManyWithoutUserNestedInput
+  dictionaryWords?: Prisma.DictionaryWordUncheckedUpdateManyWithoutUserNestedInput
   payments?: Prisma.PaymentUncheckedUpdateManyWithoutUserNestedInput
 }
 
@@ -847,6 +912,8 @@ export type UserCreateWithoutQuizAttemptsInput = {
   studyNotes?: Prisma.StudyNoteCreateNestedManyWithoutUserInput
   chatbotHistory?: Prisma.ChatbotHistoryCreateNestedManyWithoutUserInput
   certificates?: Prisma.CertificateCreateNestedManyWithoutUserInput
+  notification?: Prisma.NotificationCreateNestedManyWithoutUserInput
+  dictionaryWords?: Prisma.DictionaryWordCreateNestedManyWithoutUserInput
   payments?: Prisma.PaymentCreateNestedManyWithoutUserInput
 }
 
@@ -868,6 +935,8 @@ export type UserUncheckedCreateWithoutQuizAttemptsInput = {
   studyNotes?: Prisma.StudyNoteUncheckedCreateNestedManyWithoutUserInput
   chatbotHistory?: Prisma.ChatbotHistoryUncheckedCreateNestedManyWithoutUserInput
   certificates?: Prisma.CertificateUncheckedCreateNestedManyWithoutUserInput
+  notification?: Prisma.NotificationUncheckedCreateNestedManyWithoutUserInput
+  dictionaryWords?: Prisma.DictionaryWordUncheckedCreateNestedManyWithoutUserInput
   payments?: Prisma.PaymentUncheckedCreateNestedManyWithoutUserInput
 }
 
@@ -905,6 +974,8 @@ export type UserUpdateWithoutQuizAttemptsInput = {
   studyNotes?: Prisma.StudyNoteUpdateManyWithoutUserNestedInput
   chatbotHistory?: Prisma.ChatbotHistoryUpdateManyWithoutUserNestedInput
   certificates?: Prisma.CertificateUpdateManyWithoutUserNestedInput
+  notification?: Prisma.NotificationUpdateManyWithoutUserNestedInput
+  dictionaryWords?: Prisma.DictionaryWordUpdateManyWithoutUserNestedInput
   payments?: Prisma.PaymentUpdateManyWithoutUserNestedInput
 }
 
@@ -926,6 +997,8 @@ export type UserUncheckedUpdateWithoutQuizAttemptsInput = {
   studyNotes?: Prisma.StudyNoteUncheckedUpdateManyWithoutUserNestedInput
   chatbotHistory?: Prisma.ChatbotHistoryUncheckedUpdateManyWithoutUserNestedInput
   certificates?: Prisma.CertificateUncheckedUpdateManyWithoutUserNestedInput
+  notification?: Prisma.NotificationUncheckedUpdateManyWithoutUserNestedInput
+  dictionaryWords?: Prisma.DictionaryWordUncheckedUpdateManyWithoutUserNestedInput
   payments?: Prisma.PaymentUncheckedUpdateManyWithoutUserNestedInput
 }
 
@@ -948,6 +1021,8 @@ export type UserCreateWithoutPaymentsInput = {
   quizAttempts?: Prisma.QuizAttemptCreateNestedManyWithoutUserInput
   chatbotHistory?: Prisma.ChatbotHistoryCreateNestedManyWithoutUserInput
   certificates?: Prisma.CertificateCreateNestedManyWithoutUserInput
+  notification?: Prisma.NotificationCreateNestedManyWithoutUserInput
+  dictionaryWords?: Prisma.DictionaryWordCreateNestedManyWithoutUserInput
 }
 
 export type UserUncheckedCreateWithoutPaymentsInput = {
@@ -969,6 +1044,8 @@ export type UserUncheckedCreateWithoutPaymentsInput = {
   quizAttempts?: Prisma.QuizAttemptUncheckedCreateNestedManyWithoutUserInput
   chatbotHistory?: Prisma.ChatbotHistoryUncheckedCreateNestedManyWithoutUserInput
   certificates?: Prisma.CertificateUncheckedCreateNestedManyWithoutUserInput
+  notification?: Prisma.NotificationUncheckedCreateNestedManyWithoutUserInput
+  dictionaryWords?: Prisma.DictionaryWordUncheckedCreateNestedManyWithoutUserInput
 }
 
 export type UserCreateOrConnectWithoutPaymentsInput = {
@@ -1006,6 +1083,8 @@ export type UserUpdateWithoutPaymentsInput = {
   quizAttempts?: Prisma.QuizAttemptUpdateManyWithoutUserNestedInput
   chatbotHistory?: Prisma.ChatbotHistoryUpdateManyWithoutUserNestedInput
   certificates?: Prisma.CertificateUpdateManyWithoutUserNestedInput
+  notification?: Prisma.NotificationUpdateManyWithoutUserNestedInput
+  dictionaryWords?: Prisma.DictionaryWordUpdateManyWithoutUserNestedInput
 }
 
 export type UserUncheckedUpdateWithoutPaymentsInput = {
@@ -1027,6 +1106,8 @@ export type UserUncheckedUpdateWithoutPaymentsInput = {
   quizAttempts?: Prisma.QuizAttemptUncheckedUpdateManyWithoutUserNestedInput
   chatbotHistory?: Prisma.ChatbotHistoryUncheckedUpdateManyWithoutUserNestedInput
   certificates?: Prisma.CertificateUncheckedUpdateManyWithoutUserNestedInput
+  notification?: Prisma.NotificationUncheckedUpdateManyWithoutUserNestedInput
+  dictionaryWords?: Prisma.DictionaryWordUncheckedUpdateManyWithoutUserNestedInput
 }
 
 export type UserCreateWithoutChatbotHistoryInput = {
@@ -1047,6 +1128,8 @@ export type UserCreateWithoutChatbotHistoryInput = {
   studyNotes?: Prisma.StudyNoteCreateNestedManyWithoutUserInput
   quizAttempts?: Prisma.QuizAttemptCreateNestedManyWithoutUserInput
   certificates?: Prisma.CertificateCreateNestedManyWithoutUserInput
+  notification?: Prisma.NotificationCreateNestedManyWithoutUserInput
+  dictionaryWords?: Prisma.DictionaryWordCreateNestedManyWithoutUserInput
   payments?: Prisma.PaymentCreateNestedManyWithoutUserInput
 }
 
@@ -1068,6 +1151,8 @@ export type UserUncheckedCreateWithoutChatbotHistoryInput = {
   studyNotes?: Prisma.StudyNoteUncheckedCreateNestedManyWithoutUserInput
   quizAttempts?: Prisma.QuizAttemptUncheckedCreateNestedManyWithoutUserInput
   certificates?: Prisma.CertificateUncheckedCreateNestedManyWithoutUserInput
+  notification?: Prisma.NotificationUncheckedCreateNestedManyWithoutUserInput
+  dictionaryWords?: Prisma.DictionaryWordUncheckedCreateNestedManyWithoutUserInput
   payments?: Prisma.PaymentUncheckedCreateNestedManyWithoutUserInput
 }
 
@@ -1105,6 +1190,8 @@ export type UserUpdateWithoutChatbotHistoryInput = {
   studyNotes?: Prisma.StudyNoteUpdateManyWithoutUserNestedInput
   quizAttempts?: Prisma.QuizAttemptUpdateManyWithoutUserNestedInput
   certificates?: Prisma.CertificateUpdateManyWithoutUserNestedInput
+  notification?: Prisma.NotificationUpdateManyWithoutUserNestedInput
+  dictionaryWords?: Prisma.DictionaryWordUpdateManyWithoutUserNestedInput
   payments?: Prisma.PaymentUpdateManyWithoutUserNestedInput
 }
 
@@ -1126,6 +1213,8 @@ export type UserUncheckedUpdateWithoutChatbotHistoryInput = {
   studyNotes?: Prisma.StudyNoteUncheckedUpdateManyWithoutUserNestedInput
   quizAttempts?: Prisma.QuizAttemptUncheckedUpdateManyWithoutUserNestedInput
   certificates?: Prisma.CertificateUncheckedUpdateManyWithoutUserNestedInput
+  notification?: Prisma.NotificationUncheckedUpdateManyWithoutUserNestedInput
+  dictionaryWords?: Prisma.DictionaryWordUncheckedUpdateManyWithoutUserNestedInput
   payments?: Prisma.PaymentUncheckedUpdateManyWithoutUserNestedInput
 }
 
@@ -1147,6 +1236,8 @@ export type UserCreateWithoutStudyNotesInput = {
   quizAttempts?: Prisma.QuizAttemptCreateNestedManyWithoutUserInput
   chatbotHistory?: Prisma.ChatbotHistoryCreateNestedManyWithoutUserInput
   certificates?: Prisma.CertificateCreateNestedManyWithoutUserInput
+  notification?: Prisma.NotificationCreateNestedManyWithoutUserInput
+  dictionaryWords?: Prisma.DictionaryWordCreateNestedManyWithoutUserInput
   payments?: Prisma.PaymentCreateNestedManyWithoutUserInput
 }
 
@@ -1168,6 +1259,8 @@ export type UserUncheckedCreateWithoutStudyNotesInput = {
   quizAttempts?: Prisma.QuizAttemptUncheckedCreateNestedManyWithoutUserInput
   chatbotHistory?: Prisma.ChatbotHistoryUncheckedCreateNestedManyWithoutUserInput
   certificates?: Prisma.CertificateUncheckedCreateNestedManyWithoutUserInput
+  notification?: Prisma.NotificationUncheckedCreateNestedManyWithoutUserInput
+  dictionaryWords?: Prisma.DictionaryWordUncheckedCreateNestedManyWithoutUserInput
   payments?: Prisma.PaymentUncheckedCreateNestedManyWithoutUserInput
 }
 
@@ -1205,6 +1298,8 @@ export type UserUpdateWithoutStudyNotesInput = {
   quizAttempts?: Prisma.QuizAttemptUpdateManyWithoutUserNestedInput
   chatbotHistory?: Prisma.ChatbotHistoryUpdateManyWithoutUserNestedInput
   certificates?: Prisma.CertificateUpdateManyWithoutUserNestedInput
+  notification?: Prisma.NotificationUpdateManyWithoutUserNestedInput
+  dictionaryWords?: Prisma.DictionaryWordUpdateManyWithoutUserNestedInput
   payments?: Prisma.PaymentUpdateManyWithoutUserNestedInput
 }
 
@@ -1226,6 +1321,8 @@ export type UserUncheckedUpdateWithoutStudyNotesInput = {
   quizAttempts?: Prisma.QuizAttemptUncheckedUpdateManyWithoutUserNestedInput
   chatbotHistory?: Prisma.ChatbotHistoryUncheckedUpdateManyWithoutUserNestedInput
   certificates?: Prisma.CertificateUncheckedUpdateManyWithoutUserNestedInput
+  notification?: Prisma.NotificationUncheckedUpdateManyWithoutUserNestedInput
+  dictionaryWords?: Prisma.DictionaryWordUncheckedUpdateManyWithoutUserNestedInput
   payments?: Prisma.PaymentUncheckedUpdateManyWithoutUserNestedInput
 }
 
@@ -1247,6 +1344,8 @@ export type UserCreateWithoutStudyPlansInput = {
   quizAttempts?: Prisma.QuizAttemptCreateNestedManyWithoutUserInput
   chatbotHistory?: Prisma.ChatbotHistoryCreateNestedManyWithoutUserInput
   certificates?: Prisma.CertificateCreateNestedManyWithoutUserInput
+  notification?: Prisma.NotificationCreateNestedManyWithoutUserInput
+  dictionaryWords?: Prisma.DictionaryWordCreateNestedManyWithoutUserInput
   payments?: Prisma.PaymentCreateNestedManyWithoutUserInput
 }
 
@@ -1268,6 +1367,8 @@ export type UserUncheckedCreateWithoutStudyPlansInput = {
   quizAttempts?: Prisma.QuizAttemptUncheckedCreateNestedManyWithoutUserInput
   chatbotHistory?: Prisma.ChatbotHistoryUncheckedCreateNestedManyWithoutUserInput
   certificates?: Prisma.CertificateUncheckedCreateNestedManyWithoutUserInput
+  notification?: Prisma.NotificationUncheckedCreateNestedManyWithoutUserInput
+  dictionaryWords?: Prisma.DictionaryWordUncheckedCreateNestedManyWithoutUserInput
   payments?: Prisma.PaymentUncheckedCreateNestedManyWithoutUserInput
 }
 
@@ -1305,6 +1406,8 @@ export type UserUpdateWithoutStudyPlansInput = {
   quizAttempts?: Prisma.QuizAttemptUpdateManyWithoutUserNestedInput
   chatbotHistory?: Prisma.ChatbotHistoryUpdateManyWithoutUserNestedInput
   certificates?: Prisma.CertificateUpdateManyWithoutUserNestedInput
+  notification?: Prisma.NotificationUpdateManyWithoutUserNestedInput
+  dictionaryWords?: Prisma.DictionaryWordUpdateManyWithoutUserNestedInput
   payments?: Prisma.PaymentUpdateManyWithoutUserNestedInput
 }
 
@@ -1326,6 +1429,8 @@ export type UserUncheckedUpdateWithoutStudyPlansInput = {
   quizAttempts?: Prisma.QuizAttemptUncheckedUpdateManyWithoutUserNestedInput
   chatbotHistory?: Prisma.ChatbotHistoryUncheckedUpdateManyWithoutUserNestedInput
   certificates?: Prisma.CertificateUncheckedUpdateManyWithoutUserNestedInput
+  notification?: Prisma.NotificationUncheckedUpdateManyWithoutUserNestedInput
+  dictionaryWords?: Prisma.DictionaryWordUncheckedUpdateManyWithoutUserNestedInput
   payments?: Prisma.PaymentUncheckedUpdateManyWithoutUserNestedInput
 }
 
@@ -1347,6 +1452,8 @@ export type UserCreateWithoutSchedulesInput = {
   quizAttempts?: Prisma.QuizAttemptCreateNestedManyWithoutUserInput
   chatbotHistory?: Prisma.ChatbotHistoryCreateNestedManyWithoutUserInput
   certificates?: Prisma.CertificateCreateNestedManyWithoutUserInput
+  notification?: Prisma.NotificationCreateNestedManyWithoutUserInput
+  dictionaryWords?: Prisma.DictionaryWordCreateNestedManyWithoutUserInput
   payments?: Prisma.PaymentCreateNestedManyWithoutUserInput
 }
 
@@ -1368,6 +1475,8 @@ export type UserUncheckedCreateWithoutSchedulesInput = {
   quizAttempts?: Prisma.QuizAttemptUncheckedCreateNestedManyWithoutUserInput
   chatbotHistory?: Prisma.ChatbotHistoryUncheckedCreateNestedManyWithoutUserInput
   certificates?: Prisma.CertificateUncheckedCreateNestedManyWithoutUserInput
+  notification?: Prisma.NotificationUncheckedCreateNestedManyWithoutUserInput
+  dictionaryWords?: Prisma.DictionaryWordUncheckedCreateNestedManyWithoutUserInput
   payments?: Prisma.PaymentUncheckedCreateNestedManyWithoutUserInput
 }
 
@@ -1405,6 +1514,8 @@ export type UserUpdateWithoutSchedulesInput = {
   quizAttempts?: Prisma.QuizAttemptUpdateManyWithoutUserNestedInput
   chatbotHistory?: Prisma.ChatbotHistoryUpdateManyWithoutUserNestedInput
   certificates?: Prisma.CertificateUpdateManyWithoutUserNestedInput
+  notification?: Prisma.NotificationUpdateManyWithoutUserNestedInput
+  dictionaryWords?: Prisma.DictionaryWordUpdateManyWithoutUserNestedInput
   payments?: Prisma.PaymentUpdateManyWithoutUserNestedInput
 }
 
@@ -1426,6 +1537,116 @@ export type UserUncheckedUpdateWithoutSchedulesInput = {
   quizAttempts?: Prisma.QuizAttemptUncheckedUpdateManyWithoutUserNestedInput
   chatbotHistory?: Prisma.ChatbotHistoryUncheckedUpdateManyWithoutUserNestedInput
   certificates?: Prisma.CertificateUncheckedUpdateManyWithoutUserNestedInput
+  notification?: Prisma.NotificationUncheckedUpdateManyWithoutUserNestedInput
+  dictionaryWords?: Prisma.DictionaryWordUncheckedUpdateManyWithoutUserNestedInput
+  payments?: Prisma.PaymentUncheckedUpdateManyWithoutUserNestedInput
+}
+
+export type UserCreateWithoutDictionaryWordsInput = {
+  id?: string
+  name: string
+  email: string
+  password?: string | null
+  profileImage?: string | null
+  firebaseUid?: string | null
+  role?: $Enums.UserRole
+  isVerified?: boolean
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  enrollments?: Prisma.EnrollmentCreateNestedManyWithoutUserInput
+  courses?: Prisma.CourseCreateNestedManyWithoutInstructorInput
+  schedules?: Prisma.ScheduleCreateNestedManyWithoutUserInput
+  studyPlans?: Prisma.StudyPlanCreateNestedManyWithoutUserInput
+  studyNotes?: Prisma.StudyNoteCreateNestedManyWithoutUserInput
+  quizAttempts?: Prisma.QuizAttemptCreateNestedManyWithoutUserInput
+  chatbotHistory?: Prisma.ChatbotHistoryCreateNestedManyWithoutUserInput
+  certificates?: Prisma.CertificateCreateNestedManyWithoutUserInput
+  notification?: Prisma.NotificationCreateNestedManyWithoutUserInput
+  payments?: Prisma.PaymentCreateNestedManyWithoutUserInput
+}
+
+export type UserUncheckedCreateWithoutDictionaryWordsInput = {
+  id?: string
+  name: string
+  email: string
+  password?: string | null
+  profileImage?: string | null
+  firebaseUid?: string | null
+  role?: $Enums.UserRole
+  isVerified?: boolean
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  enrollments?: Prisma.EnrollmentUncheckedCreateNestedManyWithoutUserInput
+  courses?: Prisma.CourseUncheckedCreateNestedManyWithoutInstructorInput
+  schedules?: Prisma.ScheduleUncheckedCreateNestedManyWithoutUserInput
+  studyPlans?: Prisma.StudyPlanUncheckedCreateNestedManyWithoutUserInput
+  studyNotes?: Prisma.StudyNoteUncheckedCreateNestedManyWithoutUserInput
+  quizAttempts?: Prisma.QuizAttemptUncheckedCreateNestedManyWithoutUserInput
+  chatbotHistory?: Prisma.ChatbotHistoryUncheckedCreateNestedManyWithoutUserInput
+  certificates?: Prisma.CertificateUncheckedCreateNestedManyWithoutUserInput
+  notification?: Prisma.NotificationUncheckedCreateNestedManyWithoutUserInput
+  payments?: Prisma.PaymentUncheckedCreateNestedManyWithoutUserInput
+}
+
+export type UserCreateOrConnectWithoutDictionaryWordsInput = {
+  where: Prisma.UserWhereUniqueInput
+  create: Prisma.XOR<Prisma.UserCreateWithoutDictionaryWordsInput, Prisma.UserUncheckedCreateWithoutDictionaryWordsInput>
+}
+
+export type UserUpsertWithoutDictionaryWordsInput = {
+  update: Prisma.XOR<Prisma.UserUpdateWithoutDictionaryWordsInput, Prisma.UserUncheckedUpdateWithoutDictionaryWordsInput>
+  create: Prisma.XOR<Prisma.UserCreateWithoutDictionaryWordsInput, Prisma.UserUncheckedCreateWithoutDictionaryWordsInput>
+  where?: Prisma.UserWhereInput
+}
+
+export type UserUpdateToOneWithWhereWithoutDictionaryWordsInput = {
+  where?: Prisma.UserWhereInput
+  data: Prisma.XOR<Prisma.UserUpdateWithoutDictionaryWordsInput, Prisma.UserUncheckedUpdateWithoutDictionaryWordsInput>
+}
+
+export type UserUpdateWithoutDictionaryWordsInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  name?: Prisma.StringFieldUpdateOperationsInput | string
+  email?: Prisma.StringFieldUpdateOperationsInput | string
+  password?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  profileImage?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  firebaseUid?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  role?: Prisma.EnumUserRoleFieldUpdateOperationsInput | $Enums.UserRole
+  isVerified?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  enrollments?: Prisma.EnrollmentUpdateManyWithoutUserNestedInput
+  courses?: Prisma.CourseUpdateManyWithoutInstructorNestedInput
+  schedules?: Prisma.ScheduleUpdateManyWithoutUserNestedInput
+  studyPlans?: Prisma.StudyPlanUpdateManyWithoutUserNestedInput
+  studyNotes?: Prisma.StudyNoteUpdateManyWithoutUserNestedInput
+  quizAttempts?: Prisma.QuizAttemptUpdateManyWithoutUserNestedInput
+  chatbotHistory?: Prisma.ChatbotHistoryUpdateManyWithoutUserNestedInput
+  certificates?: Prisma.CertificateUpdateManyWithoutUserNestedInput
+  notification?: Prisma.NotificationUpdateManyWithoutUserNestedInput
+  payments?: Prisma.PaymentUpdateManyWithoutUserNestedInput
+}
+
+export type UserUncheckedUpdateWithoutDictionaryWordsInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  name?: Prisma.StringFieldUpdateOperationsInput | string
+  email?: Prisma.StringFieldUpdateOperationsInput | string
+  password?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  profileImage?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  firebaseUid?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  role?: Prisma.EnumUserRoleFieldUpdateOperationsInput | $Enums.UserRole
+  isVerified?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  enrollments?: Prisma.EnrollmentUncheckedUpdateManyWithoutUserNestedInput
+  courses?: Prisma.CourseUncheckedUpdateManyWithoutInstructorNestedInput
+  schedules?: Prisma.ScheduleUncheckedUpdateManyWithoutUserNestedInput
+  studyPlans?: Prisma.StudyPlanUncheckedUpdateManyWithoutUserNestedInput
+  studyNotes?: Prisma.StudyNoteUncheckedUpdateManyWithoutUserNestedInput
+  quizAttempts?: Prisma.QuizAttemptUncheckedUpdateManyWithoutUserNestedInput
+  chatbotHistory?: Prisma.ChatbotHistoryUncheckedUpdateManyWithoutUserNestedInput
+  certificates?: Prisma.CertificateUncheckedUpdateManyWithoutUserNestedInput
+  notification?: Prisma.NotificationUncheckedUpdateManyWithoutUserNestedInput
   payments?: Prisma.PaymentUncheckedUpdateManyWithoutUserNestedInput
 }
 
@@ -1447,6 +1668,8 @@ export type UserCreateWithoutCertificatesInput = {
   studyNotes?: Prisma.StudyNoteCreateNestedManyWithoutUserInput
   quizAttempts?: Prisma.QuizAttemptCreateNestedManyWithoutUserInput
   chatbotHistory?: Prisma.ChatbotHistoryCreateNestedManyWithoutUserInput
+  notification?: Prisma.NotificationCreateNestedManyWithoutUserInput
+  dictionaryWords?: Prisma.DictionaryWordCreateNestedManyWithoutUserInput
   payments?: Prisma.PaymentCreateNestedManyWithoutUserInput
 }
 
@@ -1468,6 +1691,8 @@ export type UserUncheckedCreateWithoutCertificatesInput = {
   studyNotes?: Prisma.StudyNoteUncheckedCreateNestedManyWithoutUserInput
   quizAttempts?: Prisma.QuizAttemptUncheckedCreateNestedManyWithoutUserInput
   chatbotHistory?: Prisma.ChatbotHistoryUncheckedCreateNestedManyWithoutUserInput
+  notification?: Prisma.NotificationUncheckedCreateNestedManyWithoutUserInput
+  dictionaryWords?: Prisma.DictionaryWordUncheckedCreateNestedManyWithoutUserInput
   payments?: Prisma.PaymentUncheckedCreateNestedManyWithoutUserInput
 }
 
@@ -1505,6 +1730,8 @@ export type UserUpdateWithoutCertificatesInput = {
   studyNotes?: Prisma.StudyNoteUpdateManyWithoutUserNestedInput
   quizAttempts?: Prisma.QuizAttemptUpdateManyWithoutUserNestedInput
   chatbotHistory?: Prisma.ChatbotHistoryUpdateManyWithoutUserNestedInput
+  notification?: Prisma.NotificationUpdateManyWithoutUserNestedInput
+  dictionaryWords?: Prisma.DictionaryWordUpdateManyWithoutUserNestedInput
   payments?: Prisma.PaymentUpdateManyWithoutUserNestedInput
 }
 
@@ -1526,6 +1753,116 @@ export type UserUncheckedUpdateWithoutCertificatesInput = {
   studyNotes?: Prisma.StudyNoteUncheckedUpdateManyWithoutUserNestedInput
   quizAttempts?: Prisma.QuizAttemptUncheckedUpdateManyWithoutUserNestedInput
   chatbotHistory?: Prisma.ChatbotHistoryUncheckedUpdateManyWithoutUserNestedInput
+  notification?: Prisma.NotificationUncheckedUpdateManyWithoutUserNestedInput
+  dictionaryWords?: Prisma.DictionaryWordUncheckedUpdateManyWithoutUserNestedInput
+  payments?: Prisma.PaymentUncheckedUpdateManyWithoutUserNestedInput
+}
+
+export type UserCreateWithoutNotificationInput = {
+  id?: string
+  name: string
+  email: string
+  password?: string | null
+  profileImage?: string | null
+  firebaseUid?: string | null
+  role?: $Enums.UserRole
+  isVerified?: boolean
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  enrollments?: Prisma.EnrollmentCreateNestedManyWithoutUserInput
+  courses?: Prisma.CourseCreateNestedManyWithoutInstructorInput
+  schedules?: Prisma.ScheduleCreateNestedManyWithoutUserInput
+  studyPlans?: Prisma.StudyPlanCreateNestedManyWithoutUserInput
+  studyNotes?: Prisma.StudyNoteCreateNestedManyWithoutUserInput
+  quizAttempts?: Prisma.QuizAttemptCreateNestedManyWithoutUserInput
+  chatbotHistory?: Prisma.ChatbotHistoryCreateNestedManyWithoutUserInput
+  certificates?: Prisma.CertificateCreateNestedManyWithoutUserInput
+  dictionaryWords?: Prisma.DictionaryWordCreateNestedManyWithoutUserInput
+  payments?: Prisma.PaymentCreateNestedManyWithoutUserInput
+}
+
+export type UserUncheckedCreateWithoutNotificationInput = {
+  id?: string
+  name: string
+  email: string
+  password?: string | null
+  profileImage?: string | null
+  firebaseUid?: string | null
+  role?: $Enums.UserRole
+  isVerified?: boolean
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  enrollments?: Prisma.EnrollmentUncheckedCreateNestedManyWithoutUserInput
+  courses?: Prisma.CourseUncheckedCreateNestedManyWithoutInstructorInput
+  schedules?: Prisma.ScheduleUncheckedCreateNestedManyWithoutUserInput
+  studyPlans?: Prisma.StudyPlanUncheckedCreateNestedManyWithoutUserInput
+  studyNotes?: Prisma.StudyNoteUncheckedCreateNestedManyWithoutUserInput
+  quizAttempts?: Prisma.QuizAttemptUncheckedCreateNestedManyWithoutUserInput
+  chatbotHistory?: Prisma.ChatbotHistoryUncheckedCreateNestedManyWithoutUserInput
+  certificates?: Prisma.CertificateUncheckedCreateNestedManyWithoutUserInput
+  dictionaryWords?: Prisma.DictionaryWordUncheckedCreateNestedManyWithoutUserInput
+  payments?: Prisma.PaymentUncheckedCreateNestedManyWithoutUserInput
+}
+
+export type UserCreateOrConnectWithoutNotificationInput = {
+  where: Prisma.UserWhereUniqueInput
+  create: Prisma.XOR<Prisma.UserCreateWithoutNotificationInput, Prisma.UserUncheckedCreateWithoutNotificationInput>
+}
+
+export type UserUpsertWithoutNotificationInput = {
+  update: Prisma.XOR<Prisma.UserUpdateWithoutNotificationInput, Prisma.UserUncheckedUpdateWithoutNotificationInput>
+  create: Prisma.XOR<Prisma.UserCreateWithoutNotificationInput, Prisma.UserUncheckedCreateWithoutNotificationInput>
+  where?: Prisma.UserWhereInput
+}
+
+export type UserUpdateToOneWithWhereWithoutNotificationInput = {
+  where?: Prisma.UserWhereInput
+  data: Prisma.XOR<Prisma.UserUpdateWithoutNotificationInput, Prisma.UserUncheckedUpdateWithoutNotificationInput>
+}
+
+export type UserUpdateWithoutNotificationInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  name?: Prisma.StringFieldUpdateOperationsInput | string
+  email?: Prisma.StringFieldUpdateOperationsInput | string
+  password?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  profileImage?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  firebaseUid?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  role?: Prisma.EnumUserRoleFieldUpdateOperationsInput | $Enums.UserRole
+  isVerified?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  enrollments?: Prisma.EnrollmentUpdateManyWithoutUserNestedInput
+  courses?: Prisma.CourseUpdateManyWithoutInstructorNestedInput
+  schedules?: Prisma.ScheduleUpdateManyWithoutUserNestedInput
+  studyPlans?: Prisma.StudyPlanUpdateManyWithoutUserNestedInput
+  studyNotes?: Prisma.StudyNoteUpdateManyWithoutUserNestedInput
+  quizAttempts?: Prisma.QuizAttemptUpdateManyWithoutUserNestedInput
+  chatbotHistory?: Prisma.ChatbotHistoryUpdateManyWithoutUserNestedInput
+  certificates?: Prisma.CertificateUpdateManyWithoutUserNestedInput
+  dictionaryWords?: Prisma.DictionaryWordUpdateManyWithoutUserNestedInput
+  payments?: Prisma.PaymentUpdateManyWithoutUserNestedInput
+}
+
+export type UserUncheckedUpdateWithoutNotificationInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  name?: Prisma.StringFieldUpdateOperationsInput | string
+  email?: Prisma.StringFieldUpdateOperationsInput | string
+  password?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  profileImage?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  firebaseUid?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  role?: Prisma.EnumUserRoleFieldUpdateOperationsInput | $Enums.UserRole
+  isVerified?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  enrollments?: Prisma.EnrollmentUncheckedUpdateManyWithoutUserNestedInput
+  courses?: Prisma.CourseUncheckedUpdateManyWithoutInstructorNestedInput
+  schedules?: Prisma.ScheduleUncheckedUpdateManyWithoutUserNestedInput
+  studyPlans?: Prisma.StudyPlanUncheckedUpdateManyWithoutUserNestedInput
+  studyNotes?: Prisma.StudyNoteUncheckedUpdateManyWithoutUserNestedInput
+  quizAttempts?: Prisma.QuizAttemptUncheckedUpdateManyWithoutUserNestedInput
+  chatbotHistory?: Prisma.ChatbotHistoryUncheckedUpdateManyWithoutUserNestedInput
+  certificates?: Prisma.CertificateUncheckedUpdateManyWithoutUserNestedInput
+  dictionaryWords?: Prisma.DictionaryWordUncheckedUpdateManyWithoutUserNestedInput
   payments?: Prisma.PaymentUncheckedUpdateManyWithoutUserNestedInput
 }
 
@@ -1543,6 +1880,8 @@ export type UserCountOutputType = {
   quizAttempts: number
   chatbotHistory: number
   certificates: number
+  notification: number
+  dictionaryWords: number
   payments: number
 }
 
@@ -1555,6 +1894,8 @@ export type UserCountOutputTypeSelect<ExtArgs extends runtime.Types.Extensions.I
   quizAttempts?: boolean | UserCountOutputTypeCountQuizAttemptsArgs
   chatbotHistory?: boolean | UserCountOutputTypeCountChatbotHistoryArgs
   certificates?: boolean | UserCountOutputTypeCountCertificatesArgs
+  notification?: boolean | UserCountOutputTypeCountNotificationArgs
+  dictionaryWords?: boolean | UserCountOutputTypeCountDictionaryWordsArgs
   payments?: boolean | UserCountOutputTypeCountPaymentsArgs
 }
 
@@ -1627,6 +1968,20 @@ export type UserCountOutputTypeCountCertificatesArgs<ExtArgs extends runtime.Typ
 /**
  * UserCountOutputType without action
  */
+export type UserCountOutputTypeCountNotificationArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  where?: Prisma.NotificationWhereInput
+}
+
+/**
+ * UserCountOutputType without action
+ */
+export type UserCountOutputTypeCountDictionaryWordsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  where?: Prisma.DictionaryWordWhereInput
+}
+
+/**
+ * UserCountOutputType without action
+ */
 export type UserCountOutputTypeCountPaymentsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   where?: Prisma.PaymentWhereInput
 }
@@ -1651,6 +2006,8 @@ export type UserSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = r
   quizAttempts?: boolean | Prisma.User$quizAttemptsArgs<ExtArgs>
   chatbotHistory?: boolean | Prisma.User$chatbotHistoryArgs<ExtArgs>
   certificates?: boolean | Prisma.User$certificatesArgs<ExtArgs>
+  notification?: boolean | Prisma.User$notificationArgs<ExtArgs>
+  dictionaryWords?: boolean | Prisma.User$dictionaryWordsArgs<ExtArgs>
   payments?: boolean | Prisma.User$paymentsArgs<ExtArgs>
   _count?: boolean | Prisma.UserCountOutputTypeDefaultArgs<ExtArgs>
 }, ExtArgs["result"]["user"]>
@@ -1704,6 +2061,8 @@ export type UserInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = 
   quizAttempts?: boolean | Prisma.User$quizAttemptsArgs<ExtArgs>
   chatbotHistory?: boolean | Prisma.User$chatbotHistoryArgs<ExtArgs>
   certificates?: boolean | Prisma.User$certificatesArgs<ExtArgs>
+  notification?: boolean | Prisma.User$notificationArgs<ExtArgs>
+  dictionaryWords?: boolean | Prisma.User$dictionaryWordsArgs<ExtArgs>
   payments?: boolean | Prisma.User$paymentsArgs<ExtArgs>
   _count?: boolean | Prisma.UserCountOutputTypeDefaultArgs<ExtArgs>
 }
@@ -1721,6 +2080,8 @@ export type $UserPayload<ExtArgs extends runtime.Types.Extensions.InternalArgs =
     quizAttempts: Prisma.$QuizAttemptPayload<ExtArgs>[]
     chatbotHistory: Prisma.$ChatbotHistoryPayload<ExtArgs>[]
     certificates: Prisma.$CertificatePayload<ExtArgs>[]
+    notification: Prisma.$NotificationPayload<ExtArgs>[]
+    dictionaryWords: Prisma.$DictionaryWordPayload<ExtArgs>[]
     payments: Prisma.$PaymentPayload<ExtArgs>[]
   }
   scalars: runtime.Types.Extensions.GetPayloadResult<{
@@ -2136,6 +2497,8 @@ export interface Prisma__UserClient<T, Null = never, ExtArgs extends runtime.Typ
   quizAttempts<T extends Prisma.User$quizAttemptsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.User$quizAttemptsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$QuizAttemptPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   chatbotHistory<T extends Prisma.User$chatbotHistoryArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.User$chatbotHistoryArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$ChatbotHistoryPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   certificates<T extends Prisma.User$certificatesArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.User$certificatesArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$CertificatePayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+  notification<T extends Prisma.User$notificationArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.User$notificationArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$NotificationPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+  dictionaryWords<T extends Prisma.User$dictionaryWordsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.User$dictionaryWordsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$DictionaryWordPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   payments<T extends Prisma.User$paymentsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.User$paymentsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$PaymentPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   /**
    * Attaches callbacks for the resolution and/or rejection of the Promise.
@@ -2758,6 +3121,54 @@ export type User$certificatesArgs<ExtArgs extends runtime.Types.Extensions.Inter
   take?: number
   skip?: number
   distinct?: Prisma.CertificateScalarFieldEnum | Prisma.CertificateScalarFieldEnum[]
+}
+
+/**
+ * User.notification
+ */
+export type User$notificationArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the Notification
+   */
+  select?: Prisma.NotificationSelect<ExtArgs> | null
+  /**
+   * Omit specific fields from the Notification
+   */
+  omit?: Prisma.NotificationOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.NotificationInclude<ExtArgs> | null
+  where?: Prisma.NotificationWhereInput
+  orderBy?: Prisma.NotificationOrderByWithRelationInput | Prisma.NotificationOrderByWithRelationInput[]
+  cursor?: Prisma.NotificationWhereUniqueInput
+  take?: number
+  skip?: number
+  distinct?: Prisma.NotificationScalarFieldEnum | Prisma.NotificationScalarFieldEnum[]
+}
+
+/**
+ * User.dictionaryWords
+ */
+export type User$dictionaryWordsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the DictionaryWord
+   */
+  select?: Prisma.DictionaryWordSelect<ExtArgs> | null
+  /**
+   * Omit specific fields from the DictionaryWord
+   */
+  omit?: Prisma.DictionaryWordOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.DictionaryWordInclude<ExtArgs> | null
+  where?: Prisma.DictionaryWordWhereInput
+  orderBy?: Prisma.DictionaryWordOrderByWithRelationInput | Prisma.DictionaryWordOrderByWithRelationInput[]
+  cursor?: Prisma.DictionaryWordWhereUniqueInput
+  take?: number
+  skip?: number
+  distinct?: Prisma.DictionaryWordScalarFieldEnum | Prisma.DictionaryWordScalarFieldEnum[]
 }
 
 /**

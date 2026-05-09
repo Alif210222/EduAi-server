@@ -29,6 +29,8 @@ model User {
   quizAttempts   QuizAttempt[]
   chatbotHistory ChatbotHistory[]
   certificates   Certificate[]
+  notification   Notification[]
+  dictionaryWords DictionaryWord[]
 
   payments Payment[]
 }
@@ -204,16 +206,23 @@ model Schedule {
   createdAt DateTime @default(now())
 }
 
-model DictionaryWord {
-  id            String  @id @default(uuid())
-  word          String  @unique
-  meaning       String
-  example       String?
-  pronunciation String?
-  synonyms      Json?
-  antonyms      Json?
 
-  createdAt DateTime @default(now())
+model DictionaryWord {
+  id             String   @id @default(uuid())
+  userId         String?
+
+  word           String
+  language       String
+  meaning        String
+  translation    String
+  example        String
+  pronunciation  String?
+  synonyms       Json?
+  antonyms       Json?
+
+  user           User? @relation(fields: [userId], references: [id])
+
+  createdAt      DateTime @default(now())
 }
 
 model Certificate {
@@ -228,5 +237,16 @@ model Certificate {
   createdAt DateTime @default(now())
 }
 
+
+model Notification {
+  id          String   @id @default(uuid())
+  userId      String
+  message     String
+  isRead      Boolean @default(false)
+
+  user        User @relation(fields: [userId], references: [id])
+
+  createdAt   DateTime @default(now())
+}
 
 

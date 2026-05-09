@@ -4,6 +4,7 @@ import passport from 'passport';
 import cookieParser from 'cookie-parser';
 import { AuthRoutes } from './modules/Auth/auth.route';
 import routes from './routes';
+import "./utils/cron"
 
 const app: Application = express();
 

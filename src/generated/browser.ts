@@ -87,3 +87,8 @@ export type DictionaryWord = Prisma.DictionaryWordModel
  * 
  */
 export type Certificate = Prisma.CertificateModel
+/**
+ * Model Notification
+ * 
+ */
+export type Notification = Prisma.NotificationModel

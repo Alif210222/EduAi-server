@@ -31,6 +31,8 @@ export type ScheduleMinAggregateOutputType = {
   description: string | null
   startTime: Date | null
   endTime: Date | null
+  reminderTime: Date | null
+  reminderSent: boolean | null
   createdAt: Date | null
 }
 
@@ -41,6 +43,8 @@ export type ScheduleMaxAggregateOutputType = {
   description: string | null
   startTime: Date | null
   endTime: Date | null
+  reminderTime: Date | null
+  reminderSent: boolean | null
   createdAt: Date | null
 }
 
@@ -51,6 +55,8 @@ export type ScheduleCountAggregateOutputType = {
   description: number
   startTime: number
   endTime: number
+  reminderTime: number
+  reminderSent: number
   createdAt: number
   _all: number
 }
@@ -63,6 +69,8 @@ export type ScheduleMinAggregateInputType = {
   description?: true
   startTime?: true
   endTime?: true
+  reminderTime?: true
+  reminderSent?: true
   createdAt?: true
 }
 
@@ -73,6 +81,8 @@ export type ScheduleMaxAggregateInputType = {
   description?: true
   startTime?: true
   endTime?: true
+  reminderTime?: true
+  reminderSent?: true
   createdAt?: true
 }
 
@@ -83,6 +93,8 @@ export type ScheduleCountAggregateInputType = {
   description?: true
   startTime?: true
   endTime?: true
+  reminderTime?: true
+  reminderSent?: true
   createdAt?: true
   _all?: true
 }
@@ -166,6 +178,8 @@ export type ScheduleGroupByOutputType = {
   description: string | null
   startTime: Date
   endTime: Date
+  reminderTime: Date | null
+  reminderSent: boolean
   createdAt: Date
   _count: ScheduleCountAggregateOutputType | null
   _min: ScheduleMinAggregateOutputType | null
@@ -197,6 +211,8 @@ export type ScheduleWhereInput = {
   description?: Prisma.StringNullableFilter<"Schedule"> | string | null
   startTime?: Prisma.DateTimeFilter<"Schedule"> | Date | string
   endTime?: Prisma.DateTimeFilter<"Schedule"> | Date | string
+  reminderTime?: Prisma.DateTimeNullableFilter<"Schedule"> | Date | string | null
+  reminderSent?: Prisma.BoolFilter<"Schedule"> | boolean
   createdAt?: Prisma.DateTimeFilter<"Schedule"> | Date | string
   user?: Prisma.XOR<Prisma.UserScalarRelationFilter, Prisma.UserWhereInput>
 }
@@ -208,6 +224,8 @@ export type ScheduleOrderByWithRelationInput = {
   description?: Prisma.SortOrderInput | Prisma.SortOrder
   startTime?: Prisma.SortOrder
   endTime?: Prisma.SortOrder
+  reminderTime?: Prisma.SortOrderInput | Prisma.SortOrder
+  reminderSent?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   user?: Prisma.UserOrderByWithRelationInput
 }
@@ -222,6 +240,8 @@ export type ScheduleWhereUniqueInput = Prisma.AtLeast<{
   description?: Prisma.StringNullableFilter<"Schedule"> | string | null
   startTime?: Prisma.DateTimeFilter<"Schedule"> | Date | string
   endTime?: Prisma.DateTimeFilter<"Schedule"> | Date | string
+  reminderTime?: Prisma.DateTimeNullableFilter<"Schedule"> | Date | string | null
+  reminderSent?: Prisma.BoolFilter<"Schedule"> | boolean
   createdAt?: Prisma.DateTimeFilter<"Schedule"> | Date | string
   user?: Prisma.XOR<Prisma.UserScalarRelationFilter, Prisma.UserWhereInput>
 }, "id">
@@ -233,6 +253,8 @@ export type ScheduleOrderByWithAggregationInput = {
   description?: Prisma.SortOrderInput | Prisma.SortOrder
   startTime?: Prisma.SortOrder
   endTime?: Prisma.SortOrder
+  reminderTime?: Prisma.SortOrderInput | Prisma.SortOrder
+  reminderSent?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   _count?: Prisma.ScheduleCountOrderByAggregateInput
   _max?: Prisma.ScheduleMaxOrderByAggregateInput
@@ -249,6 +271,8 @@ export type ScheduleScalarWhereWithAggregatesInput = {
   description?: Prisma.StringNullableWithAggregatesFilter<"Schedule"> | string | null
   startTime?: Prisma.DateTimeWithAggregatesFilter<"Schedule"> | Date | string
   endTime?: Prisma.DateTimeWithAggregatesFilter<"Schedule"> | Date | string
+  reminderTime?: Prisma.DateTimeNullableWithAggregatesFilter<"Schedule"> | Date | string | null
+  reminderSent?: Prisma.BoolWithAggregatesFilter<"Schedule"> | boolean
   createdAt?: Prisma.DateTimeWithAggregatesFilter<"Schedule"> | Date | string
 }
 
@@ -258,6 +282,8 @@ export type ScheduleCreateInput = {
   description?: string | null
   startTime: Date | string
   endTime: Date | string
+  reminderTime?: Date | string | null
+  reminderSent?: boolean
   createdAt?: Date | string
   user: Prisma.UserCreateNestedOneWithoutSchedulesInput
 }
@@ -269,6 +295,8 @@ export type ScheduleUncheckedCreateInput = {
   description?: string | null
   startTime: Date | string
   endTime: Date | string
+  reminderTime?: Date | string | null
+  reminderSent?: boolean
   createdAt?: Date | string
 }
 
@@ -278,6 +306,8 @@ export type ScheduleUpdateInput = {
   description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   startTime?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   endTime?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  reminderTime?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  reminderSent?: Prisma.BoolFieldUpdateOperationsInput | boolean
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   user?: Prisma.UserUpdateOneRequiredWithoutSchedulesNestedInput
 }
@@ -289,6 +319,8 @@ export type ScheduleUncheckedUpdateInput = {
   description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   startTime?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   endTime?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  reminderTime?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  reminderSent?: Prisma.BoolFieldUpdateOperationsInput | boolean
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
 
@@ -299,6 +331,8 @@ export type ScheduleCreateManyInput = {
   description?: string | null
   startTime: Date | string
   endTime: Date | string
+  reminderTime?: Date | string | null
+  reminderSent?: boolean
   createdAt?: Date | string
 }
 
@@ -308,6 +342,8 @@ export type ScheduleUpdateManyMutationInput = {
   description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   startTime?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   endTime?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  reminderTime?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  reminderSent?: Prisma.BoolFieldUpdateOperationsInput | boolean
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
 
@@ -318,6 +354,8 @@ export type ScheduleUncheckedUpdateManyInput = {
   description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   startTime?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   endTime?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  reminderTime?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  reminderSent?: Prisma.BoolFieldUpdateOperationsInput | boolean
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
 
@@ -338,6 +376,8 @@ export type ScheduleCountOrderByAggregateInput = {
   description?: Prisma.SortOrder
   startTime?: Prisma.SortOrder
   endTime?: Prisma.SortOrder
+  reminderTime?: Prisma.SortOrder
+  reminderSent?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
 }
 
@@ -348,6 +388,8 @@ export type ScheduleMaxOrderByAggregateInput = {
   description?: Prisma.SortOrder
   startTime?: Prisma.SortOrder
   endTime?: Prisma.SortOrder
+  reminderTime?: Prisma.SortOrder
+  reminderSent?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
 }
 
@@ -358,6 +400,8 @@ export type ScheduleMinOrderByAggregateInput = {
   description?: Prisma.SortOrder
   startTime?: Prisma.SortOrder
   endTime?: Prisma.SortOrder
+  reminderTime?: Prisma.SortOrder
+  reminderSent?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
 }
 
@@ -403,12 +447,18 @@ export type ScheduleUncheckedUpdateManyWithoutUserNestedInput = {
   deleteMany?: Prisma.ScheduleScalarWhereInput | Prisma.ScheduleScalarWhereInput[]
 }
 
+export type NullableDateTimeFieldUpdateOperationsInput = {
+  set?: Date | string | null
+}
+
 export type ScheduleCreateWithoutUserInput = {
   id?: string
   title: string
   description?: string | null
   startTime: Date | string
   endTime: Date | string
+  reminderTime?: Date | string | null
+  reminderSent?: boolean
   createdAt?: Date | string
 }
 
@@ -418,6 +468,8 @@ export type ScheduleUncheckedCreateWithoutUserInput = {
   description?: string | null
   startTime: Date | string
   endTime: Date | string
+  reminderTime?: Date | string | null
+  reminderSent?: boolean
   createdAt?: Date | string
 }
 
@@ -457,6 +509,8 @@ export type ScheduleScalarWhereInput = {
   description?: Prisma.StringNullableFilter<"Schedule"> | string | null
   startTime?: Prisma.DateTimeFilter<"Schedule"> | Date | string
   endTime?: Prisma.DateTimeFilter<"Schedule"> | Date | string
+  reminderTime?: Prisma.DateTimeNullableFilter<"Schedule"> | Date | string | null
+  reminderSent?: Prisma.BoolFilter<"Schedule"> | boolean
   createdAt?: Prisma.DateTimeFilter<"Schedule"> | Date | string
 }
 
@@ -466,6 +520,8 @@ export type ScheduleCreateManyUserInput = {
   description?: string | null
   startTime: Date | string
   endTime: Date | string
+  reminderTime?: Date | string | null
+  reminderSent?: boolean
   createdAt?: Date | string
 }
 
@@ -475,6 +531,8 @@ export type ScheduleUpdateWithoutUserInput = {
   description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   startTime?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   endTime?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  reminderTime?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  reminderSent?: Prisma.BoolFieldUpdateOperationsInput | boolean
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
 
@@ -484,6 +542,8 @@ export type ScheduleUncheckedUpdateWithoutUserInput = {
   description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   startTime?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   endTime?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  reminderTime?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  reminderSent?: Prisma.BoolFieldUpdateOperationsInput | boolean
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
 
@@ -493,6 +553,8 @@ export type ScheduleUncheckedUpdateManyWithoutUserInput = {
   description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   startTime?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   endTime?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  reminderTime?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  reminderSent?: Prisma.BoolFieldUpdateOperationsInput | boolean
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
 
@@ -505,6 +567,8 @@ export type ScheduleSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs
   description?: boolean
   startTime?: boolean
   endTime?: boolean
+  reminderTime?: boolean
+  reminderSent?: boolean
   createdAt?: boolean
   user?: boolean | Prisma.UserDefaultArgs<ExtArgs>
 }, ExtArgs["result"]["schedule"]>
@@ -516,6 +580,8 @@ export type ScheduleSelectCreateManyAndReturn<ExtArgs extends runtime.Types.Exte
   description?: boolean
   startTime?: boolean
   endTime?: boolean
+  reminderTime?: boolean
+  reminderSent?: boolean
   createdAt?: boolean
   user?: boolean | Prisma.UserDefaultArgs<ExtArgs>
 }, ExtArgs["result"]["schedule"]>
@@ -527,6 +593,8 @@ export type ScheduleSelectUpdateManyAndReturn<ExtArgs extends runtime.Types.Exte
   description?: boolean
   startTime?: boolean
   endTime?: boolean
+  reminderTime?: boolean
+  reminderSent?: boolean
   createdAt?: boolean
   user?: boolean | Prisma.UserDefaultArgs<ExtArgs>
 }, ExtArgs["result"]["schedule"]>
@@ -538,10 +606,12 @@ export type ScheduleSelectScalar = {
   description?: boolean
   startTime?: boolean
   endTime?: boolean
+  reminderTime?: boolean
+  reminderSent?: boolean
   createdAt?: boolean
 }
 
-export type ScheduleOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "userId" | "title" | "description" | "startTime" | "endTime" | "createdAt", ExtArgs["result"]["schedule"]>
+export type ScheduleOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "userId" | "title" | "description" | "startTime" | "endTime" | "reminderTime" | "reminderSent" | "createdAt", ExtArgs["result"]["schedule"]>
 export type ScheduleInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   user?: boolean | Prisma.UserDefaultArgs<ExtArgs>
 }
@@ -564,6 +634,8 @@ export type $SchedulePayload<ExtArgs extends runtime.Types.Extensions.InternalAr
     description: string | null
     startTime: Date
     endTime: Date
+    reminderTime: Date | null
+    reminderSent: boolean
     createdAt: Date
   }, ExtArgs["result"]["schedule"]>
   composites: {}
@@ -995,6 +1067,8 @@ export interface ScheduleFieldRefs {
   readonly description: Prisma.FieldRef<"Schedule", 'String'>
   readonly startTime: Prisma.FieldRef<"Schedule", 'DateTime'>
   readonly endTime: Prisma.FieldRef<"Schedule", 'DateTime'>
+  readonly reminderTime: Prisma.FieldRef<"Schedule", 'DateTime'>
+  readonly reminderSent: Prisma.FieldRef<"Schedule", 'Boolean'>
   readonly createdAt: Prisma.FieldRef<"Schedule", 'DateTime'>
 }
     
